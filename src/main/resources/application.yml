@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  thymeleaf:
+      cache: false
+      check-template: true
+      check-template-location: true
+      enabled: true
+      encoding: UTF-8
+      prefix: classpath:/templates/
+      suffix: .html
+  datasource:
+    url: jdbc:h2:mem:ucamu
+    username: kbsure
+    password: kbsure
+  h2:
+    console:
+      enabled: true
