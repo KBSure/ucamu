@@ -9,16 +9,16 @@ import java.io.Serializable;
 @Data
 @Embeddable
 public class Content implements Serializable {
-    @Column(name = "contents_who")
+    @Column(name = "content_who")
         private String who;
-    @Column(name = "contents_when")
+    @Column(name = "content_when")
         private String when;
-    @Column(name = "contents_where")
+    @Column(name = "content_where")
         private String where;
-    @Column(name = "contents_what")
+    @Column(name = "content_what")
         private String what;
-    @Column(name = "contents_how")
+    @Column(name = "content_how")
         private String how;
-    @Column(name = "contents_why")
+    @Column(name = "content_why")
         private String why;
 }
