@@ -24,19 +24,27 @@ public class Board implements Serializable {
         private Long view;
         private Integer great;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "USERS_id")
         private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "CATEGORIES_id")
         private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "board")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
+    @JoinColumn(name = "BOARDS_id")
         private List<Comment> commentList;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "board")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
+    @JoinColumn(name = "BOARDS_id")
         private List<Image> imageList;
 
+    public void addComment(Comment comment){
+        this.commentList.add(comment);
+    }
 
+    public void addImage(Image image){
+        this.imageList.add(image);
+    }
 }

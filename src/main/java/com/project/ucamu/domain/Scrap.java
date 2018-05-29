@@ -14,11 +14,11 @@ public class Scrap implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "USERS_id")
         private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "BOARDS_id")
         private Board board;
 }

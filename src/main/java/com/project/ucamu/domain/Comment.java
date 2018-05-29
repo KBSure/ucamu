@@ -20,10 +20,9 @@ public class Comment implements Serializable {
     @Embedded
         private Date date;
         private Integer great;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "BOARDS_id")
-        private Board board;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "USERS_id")
         private User user;
+
 }

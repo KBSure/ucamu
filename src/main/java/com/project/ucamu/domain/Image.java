@@ -15,12 +15,8 @@ public class Image implements Serializable {
         private Long id;
         private String name;
         private String path;
+
     @Column(name = "mime_type")
         private String mimeType;
         private Integer size;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "BOARDS_id")
-        private Board board;
-
 }
