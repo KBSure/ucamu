@@ -20,13 +20,13 @@ spring:
     # view-names:
 
   datasource:
-    url: jdbc:mysql://localhost:3306/shoppingmall
-    username: fastcampus
-    password: fastcampus
+    url: jdbc:mysql://localhost:3306/ucamu
+    username: kbsure
+    password: kbsure
 
 
 image:
   path: ~/image
 
-logging:
-  file: ~/logs/log.log
+#logging:
+#  file: ~/logs/log.log
