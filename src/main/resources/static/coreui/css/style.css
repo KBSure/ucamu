@@ -11552,11 +11552,11 @@ canvas {
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  width: 200px;
+  width: 150px;
 }
 
 .sidebar .nav {
-  width: 200px;
+  width: 150px;
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100%;
@@ -12614,8 +12614,8 @@ app-root {
 }
 
 .app-body .sidebar {
-  -ms-flex: 0 0 200px;
-  flex: 0 0 200px;
+  -ms-flex: 0 0 150px;
+  flex: 0 0 150px;
   -ms-flex-order: -1;
   order: -1;
 }
@@ -12653,7 +12653,7 @@ html[dir="rtl"] .aside-menu {
   .sidebar-fixed .sidebar {
     position: fixed;
     z-index: 1019;
-    width: 200px;
+    width: 150px;
     height: 100vh;
   }
   .sidebar-fixed .app-header + .app-body .sidebar {
@@ -12743,7 +12743,7 @@ html:not([dir="rtl"]) .sidebar-show .sidebar {
 @media (min-width: 576px) {
   html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main,
   html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .app-footer {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   html:not([dir="rtl"]) .sidebar-show.sidebar-fixed.sidebar-compact .main,
   html:not([dir="rtl"]) .sidebar-show.sidebar-fixed.sidebar-compact .app-footer {
@@ -12867,7 +12867,7 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
 @media (min-width: 576px) and (min-width: 576px) {
   html:not([dir="rtl"]) .sidebar-sm-show.sidebar-fixed .main,
   html:not([dir="rtl"]) .sidebar-sm-show.sidebar-fixed .app-footer {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   html:not([dir="rtl"]) .sidebar-sm-show.sidebar-fixed.sidebar-compact .main,
   html:not([dir="rtl"]) .sidebar-sm-show.sidebar-fixed.sidebar-compact .app-footer {
@@ -12998,7 +12998,7 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
 @media (min-width: 768px) and (min-width: 576px) {
   html:not([dir="rtl"]) .sidebar-md-show.sidebar-fixed .main,
   html:not([dir="rtl"]) .sidebar-md-show.sidebar-fixed .app-footer {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   html:not([dir="rtl"]) .sidebar-md-show.sidebar-fixed.sidebar-compact .main,
   html:not([dir="rtl"]) .sidebar-md-show.sidebar-fixed.sidebar-compact .app-footer {
@@ -13129,7 +13129,7 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
 @media (min-width: 992px) and (min-width: 576px) {
   html:not([dir="rtl"]) .sidebar-lg-show.sidebar-fixed .main,
   html:not([dir="rtl"]) .sidebar-lg-show.sidebar-fixed .app-footer {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   html:not([dir="rtl"]) .sidebar-lg-show.sidebar-fixed.sidebar-compact .main,
   html:not([dir="rtl"]) .sidebar-lg-show.sidebar-fixed.sidebar-compact .app-footer {
@@ -13260,7 +13260,7 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
 @media (min-width: 1200px) and (min-width: 576px) {
   html:not([dir="rtl"]) .sidebar-xl-show.sidebar-fixed .main,
   html:not([dir="rtl"]) .sidebar-xl-show.sidebar-fixed .app-footer {
-    margin-left: 200px;
+    margin-left: 150px;
   }
   html:not([dir="rtl"]) .sidebar-xl-show.sidebar-fixed.sidebar-compact .main,
   html:not([dir="rtl"]) .sidebar-xl-show.sidebar-fixed.sidebar-compact .app-footer {
