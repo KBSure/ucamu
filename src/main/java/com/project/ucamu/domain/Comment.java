@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "COMMENTS")
+@Table(name = "COMMENT")
 @Entity
 @Getter @Setter
 public class Comment implements Serializable {

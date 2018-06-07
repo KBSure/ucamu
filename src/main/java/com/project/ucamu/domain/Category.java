@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "CATEGORIES")
+@Table(name = "CATEGORIE")
 @Entity
 @Getter @Setter
 public class Category implements Serializable {

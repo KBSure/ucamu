@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "USERS")
+@Table(name = "USER")
 @Entity
 @Getter @Setter
 public class User implements Serializable {
