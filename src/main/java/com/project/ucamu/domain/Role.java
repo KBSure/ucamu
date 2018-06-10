@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "ROLES")
+@Table(name = "ROLE")
 @Entity
 @Getter @Setter
 public class Role implements Serializable {

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "USERS")
+@Table(name = "USER")
 @Entity
 @Getter @Setter
 public class User implements Serializable {
@@ -22,22 +22,22 @@ public class User implements Serializable {
         private String idName;
         private String password;
 
-    @Column(name = "nick_name")
-        private String nickName;
+    @Column(name = "nickname")
+        private String nickname;
         private String name;
         private String email;
         private String phone;
 
     @Embedded
-        private UserDate date;
+        private UserDate userdate;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "situation_id")
+    @JoinColumn(name = "SITUATION_id")
         private UserSituation userSituation;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinTable(name = "ROLE_USER", joinColumns = @JoinColumn(name = "USERS_id"),
-            inverseJoinColumns = @JoinColumn(name = "ROLES_id"))
+    @JoinTable(name = "ROLE_USER", joinColumns = @JoinColumn(name = "USER_id"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_id"))
         private List<Role> roleList = new ArrayList<>();
 
     public void addRole(Role role){
