@@ -25,19 +25,19 @@ public class Board implements Serializable {
         private Integer great; //0
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "USERS_id")
+    @JoinColumn(name = "USER_id")
         private User user; //session 정보
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "CATEGORIES_id")
+    @JoinColumn(name = "CATEGORY_id")
         private Category category; //path 내의 카테고리 : board/free
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "BOARDS_id")
+    @JoinColumn(name = "BOARD_id")
         private List<Comment> commentList; // 비워두기
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "BOARDS_id")
+    @JoinColumn(name = "BOARD_id")
         private List<Image> imageList; // 있으면 넣고, 없으면 비워두기
 
     public void addComment(Comment comment){

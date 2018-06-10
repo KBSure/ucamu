@@ -32,12 +32,12 @@ public class User implements Serializable {
         private UserDate userdate;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "situation_id")
+    @JoinColumn(name = "SITUATION_id")
         private UserSituation userSituation;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinTable(name = "ROLE_USER", joinColumns = @JoinColumn(name = "USERS_id"),
-            inverseJoinColumns = @JoinColumn(name = "ROLES_id"))
+    @JoinTable(name = "ROLE_USER", joinColumns = @JoinColumn(name = "USER_id"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_id"))
         private List<Role> roleList = new ArrayList<>();
 
     public void addRole(Role role){

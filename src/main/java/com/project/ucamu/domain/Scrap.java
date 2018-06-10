@@ -19,10 +19,10 @@ public class Scrap implements Serializable {
         private MiniDate date;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "USERS_id")
+    @JoinColumn(name = "USER_id")
         private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "BOARDS_id")
+    @JoinColumn(name = "BOARD_id")
         private Board board;
 }

@@ -22,7 +22,7 @@ public class Comment implements Serializable {
         private Integer great;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "USERS_id")
+    @JoinColumn(name = "USER_id")
         private User user;
 
 }

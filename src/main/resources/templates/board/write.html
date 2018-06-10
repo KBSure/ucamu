@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="animated fadeIn">
                 <!--아래 수정-->
-                <form method="post" action="#">
+                <form method="post" th:action="'/board/' + ${category} + '/write'">
                     <div class="card">
                         <div class="card-header">
                             <strong>글쓰기</strong>
@@ -14,27 +14,27 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="who">누가</label>
-                                <input type="text" class="form-control" id="who" placeholder="ex) 내가">
+                                <input type="text" class="form-control" id="who" name="who" placeholder="ex) 내가">
                             </div>
                             <div class="form-group">
                                 <label for="when">언제</label>
-                                <input type="text" class="form-control" id="when" placeholder="ex) 지금">
+                                <input type="text" class="form-control" id="when" name="when" placeholder="ex) 지금">
                             </div>
                             <div class="form-group">
                                 <label for="where">어디서</label>
-                                <input type="text" class="form-control" id="where" placeholder="ex) 유카뮤에서">
+                                <input type="text" class="form-control" id="where" name="where" placeholder="ex) 유카뮤에서">
                             </div>
                             <div class="form-group">
                                 <label for="what">무엇을</label>
-                                <input type="text" class="form-control" id="what" placeholder="ex) 게시글을">
+                                <input type="text" class="form-control" id="what" th:name="what" placeholder="ex) 게시글을">
                             </div>
                             <div class="form-group">
                                 <label for="how">어떻게</label>
-                                <input type="text" class="form-control" id="how" placeholder="ex) 간단하게 예시를 들면서 작성하고 있다">
+                                <input type="text" class="form-control" id="how" name="how" placeholder="ex) 간단하게 예시를 들면서 작성하고 있다">
                             </div>
                             <div class="form-group">
                                 <label for="why">왜</label>
-                                <input type="text" class="form-control" id="why" placeholder="ex) 작성하는 방법을 모를까봐">
+                                <input type="text" class="form-control" id="why" th:name="why" placeholder="ex) 작성하는 방법을 모를까봐">
                             </div>
                         </div>
                         <div class="card-footer">
