@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-//    @Autowired
-//    UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public User getUser(String idName) {
-        return new User();
+        return userRepository.findUserByIdName(idName);
 //        return userRepository.findUserByIdName(idName);
     }
 }
