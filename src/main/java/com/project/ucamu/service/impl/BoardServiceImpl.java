@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public void addBoard(Board board, BoardFormDto boardFormDto) {
+    public Board addBoard(Board board, BoardFormDto boardFormDto) {
         //image 등록도 진행해야함
         board.setContent(new Content());
         BeanUtils.copyProperties(boardFormDto, board.getContent());
@@ -35,8 +35,7 @@ public class BoardServiceImpl implements BoardService {
         board.setGreat(0);
         board.setView(0L);
         board.setDate(new NormalDate(LocalDateTime.now(), LocalDateTime.now()));
-        boardRepository.save(board);
-        return;
+        return boardRepository.save(board);
     }
 
     @Override

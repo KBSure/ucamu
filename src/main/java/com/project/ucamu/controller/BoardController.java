@@ -42,9 +42,9 @@ public class BoardController {
         Board board = new Board();
         board.setUser(user);
         board.setCategory(boardService.getCategory(categoryName));
-        boardService.addBoard(board, boardFormDto);
+        Board saveBoard = boardService.addBoard(board, boardFormDto);
 
-        return "redirect:/board?";
+        return "redirect:/board/" + categoryName + "/"+  saveBoard.getId() + "";
     }
 
 }
