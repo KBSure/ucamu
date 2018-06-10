@@ -1,7 +1,7 @@
 package com.project.ucamu.domain;
 
 import com.project.ucamu.domain.embeddable.Content;
-import com.project.ucamu.domain.embeddable.Date;
+import com.project.ucamu.domain.embeddable.NormalDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +18,7 @@ public class Comment implements Serializable {
     @Embedded
         private Content content;
     @Embedded
-        private Date date;
+        private NormalDate date;
         private Integer great;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향

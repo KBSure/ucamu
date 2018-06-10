@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-    @Autowired
-    BoardRepository boardRepository;
+//    @Autowired
+//    BoardRepository boardRepository;
 
     @Override
     public void addBoard(Board board) {
@@ -19,10 +19,12 @@ public class BoardServiceImpl implements BoardService {
         //구현 안되서 처리 아직 안 할 것 : imageList
 
         //임의로 title을 how 내용으로 선정.
-        board.setTitle(board.getContent().getHow());
-        board.setView(0L);
-        board.setGreat(0);
-        boardRepository.save(board);
+
+
+//        board.setTitle(board.getContent().getHow());
+//        board.setView(0L);
+//        board.setGreat(0);
+//        boardRepository.save(board);
         return;
     }
 }

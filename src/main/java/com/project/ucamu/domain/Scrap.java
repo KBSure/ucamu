@@ -1,5 +1,6 @@
 package com.project.ucamu.domain;
 
+import com.project.ucamu.domain.embeddable.MiniDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,9 @@ public class Scrap implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+
+    @Embedded
+        private MiniDate date;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "USERS_id")

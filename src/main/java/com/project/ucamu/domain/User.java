@@ -22,14 +22,14 @@ public class User implements Serializable {
         private String idName;
         private String password;
 
-    @Column(name = "nick_name")
-        private String nickName;
+    @Column(name = "nickname")
+        private String nickname;
         private String name;
         private String email;
         private String phone;
 
     @Embedded
-        private UserDate date;
+        private UserDate userdate;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
     @JoinColumn(name = "situation_id")

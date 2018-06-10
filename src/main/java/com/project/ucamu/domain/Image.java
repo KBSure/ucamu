@@ -1,5 +1,6 @@
 package com.project.ucamu.domain;
 
+import com.project.ucamu.domain.embeddable.MiniDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,4 +20,7 @@ public class Image implements Serializable {
     @Column(name = "mime_type")
         private String mimeType;
         private Integer size;
+
+    @Embedded
+        private MiniDate date;
 }

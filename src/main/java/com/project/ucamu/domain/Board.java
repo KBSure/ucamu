@@ -1,7 +1,7 @@
 package com.project.ucamu.domain;
 
 import com.project.ucamu.domain.embeddable.Content;
-import com.project.ucamu.domain.embeddable.Date;
+import com.project.ucamu.domain.embeddable.NormalDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ public class Board implements Serializable {
     @Embedded
         private Content content; //form에서 가져오기
     @Embedded
-        private Date date; //서버 날짜로 저장
+        private NormalDate date; //서버 날짜로 저장
         private Long view; //0
         private Integer great; //0
 
