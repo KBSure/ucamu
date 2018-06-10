@@ -10,26 +10,19 @@ spring:
           descriptor:
             sql:
               BasicBinder: TRACE
-  thymeleaf:
-    cache: false
-    check-template: true
-    check-template-location: true
-    enabled: true
-    encoding: UTF-8
-    # excluded-view-names:
-    # mode: HTML5
-    prefix: classpath:/templates/
-    suffix: .html
-    # template-resolver-order:
-    # view-names:
 
   datasource:
-    url: jdbc:h2:mem:ucamu
+    url: jdbc:h2:mem:ucamu;DB_CLOSE_DELAY=-1
     username: kbsure
     password: kbsure
+    initialization-mode: always
   h2:
     console:
       enabled: true
+#  security:
+#    basic:
+#      enabled: true
+#      authorize-mode: NONE
 
 image:
   path: C:/Users/story/Pictures/ucamu/image

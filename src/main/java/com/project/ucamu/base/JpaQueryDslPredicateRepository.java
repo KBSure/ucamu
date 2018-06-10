@@ -5,10 +5,12 @@ import com.querydsl.core.types.Predicate;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
 import java.util.List;
 
+@NoRepositoryBean
 public interface JpaQueryDslPredicateRepository<T, ID  extends Serializable>
         extends JpaRepository<T, ID>, QuerydslPredicateExecutor<T> {
     //findAll 왜 override? List<T>로 반환하기 위해?
