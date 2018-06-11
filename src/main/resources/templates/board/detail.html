@@ -1,0 +1,50 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default_layout">
+<th:block layout:fragment="body_main">
+    <main class="main">
+        <br>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>자유게시판</strong>
+                        <small>글읽기</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>내가 오늘 학원에서</h2>
+                        </div>
+                        <div class="jumbotron jumbotron-fluid" style="padding-top:3px">
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript:"th:text="${board.user.nickname}"></a>님
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <small th:text="${#temporals.format(board.date.regDate, 'yyyy/MM/dd HH:mm')}"></small>
+                                    </li>
+                                    <li class="breadcrumb-menu d-md-down-none">
+                                        <div class="btn-group" role="group" aria-label="Button group">
+                                            <a class="btn" href="javascript:" th:text="${board.great}">
+                                                <i class="icon-graph"></i> &nbsp;17</a>
+                                            <a class="btn" href="javascript:" th:text="${board.view}">
+                                                <i class="icon-settings"></i> &nbsp;2342</a>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </nav>
+                            <div class="container" style="max-width: 97%;">
+                                <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
+                                <p th:text="'언제 : ' + ${board.content.when}">언제 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                <p th:text="'어디서 : ' + ${board.content.where}">어디서 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                <p th:text="'무엇을 : ' + ${board.content.what}">무엇을 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                <p th:text="'어떻게 : ' + ${board.content.how}">어떻게 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                <p th:text="'왜 : ' + ${board.content.why}">왜 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</th:block>
+</html>

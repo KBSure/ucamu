@@ -7,5 +7,7 @@ import com.project.ucamu.dto.BoardFormDto;
 
 public interface BoardService {
     Board addBoard(Board board, BoardFormDto boardFormDto);
-    Category getCategory(String Category);
+    Board getBoard(Long boardId);
+    Category getCategory(String categoryName);
+
 }

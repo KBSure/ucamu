@@ -47,4 +47,12 @@ public class BoardController {
         return "redirect:/board/" + categoryName + "/"+  saveBoard.getId() + "";
     }
 
+    @GetMapping("/{category}/{boardId}")
+    public String getDetail(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ModelMap modelMap){
+        //boardId에 해당하는 board Entity을 불러와야 한다. (카테고리 체크를 해봐도 좋다)
+        Board board = boardService.getBoard(boardId);
+        modelMap.addAttribute("board", board);
+        return "board/detail";
+    }
+
 }
