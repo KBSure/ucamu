@@ -1,11 +1,10 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default_layout">
 <th:block layout:fragment="body_main">
     <main class="main">
-        <br>
         <div class="container-fluid">
             <div class="animated fadeIn">
                 <!--아래 수정-->
-                <form method="post" th:action="'/board/' + ${category} + '/write'">
+                <form method="post" th:action="@{/board/{category}/write(category=${category})}">
                     <div class="card">
                         <div class="card-header">
                             <strong>자유게시판</strong>
@@ -38,7 +37,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="submit" formmethod="post" class="btn btn-sm btn-primary">
                                 <i class="fa fa-dot-circle-o"></i> 등록</button>
                             &nbsp;
                             <button type="reset" class="btn btn-sm btn-danger">

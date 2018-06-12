@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/board")
@@ -27,15 +28,15 @@ public class BoardController {
         return "board/list";
     }
 
-    @GetMapping("/{category}/write")
+    @GetMapping(path = "/{category}/write")
     public String getWrite(@PathVariable(value = "category") String categoryName, ModelMap modelMap){
         modelMap.addAttribute("category", categoryName);
         return "board/write";
     }
 
     //category가 유효하지 않도록 접근 한 경우 예외 처리 해야 한다.
-    @PostMapping("/{category}/write")
-    public String postWrite(@Valid BoardFormDto boardFormDto, @PathVariable(value = "category") String categoryName){
+    @PostMapping(path = "/{category}/write")
+    public String postWrite(Principal principal,  @Valid BoardFormDto boardFormDto, @PathVariable(value = "category") String categoryName){
 
         User user = userService.getUser("kbs");
 //      User user = userService.getUser(principal.getName());
@@ -47,7 +48,7 @@ public class BoardController {
         return "redirect:/board/" + categoryName + "/"+  saveBoard.getId() + "";
     }
 
-    @GetMapping("/{category}/{boardId}")
+    @GetMapping(path = "/{category}/{boardId}")
     public String getDetail(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ModelMap modelMap){
         //boardId에 해당하는 board Entity을 불러와야 한다. (카테고리 체크를 해봐도 좋다)
         Board board = boardService.getBoard(boardId);
