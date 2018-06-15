@@ -3,17 +3,16 @@
     <main class="main">
         <div class="container-fluid">
             <div class="animated fadeIn">
-                <!--아래 수정-->
-                <form method="post" th:action="@{/board/{category}/write(category=${category})}">
-                    <div class="card">
+                <form th:method="post" th:action="/board/free/write">
+                    <div class="card" >
                         <div class="card-header">
                             <strong>자유게시판</strong>
                             <small>글쓰기</small>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="who">누가</label>
-                                <input type="text" class="form-control" id="who" name="who" placeholder="ex) 내가">
+                                <label th:for="who">누가</label>
+                                <input type="text" class="form-control" id="who" placeholder="ex) 내가">
                             </div>
                             <div class="form-group">
                                 <label for="when">언제</label>
@@ -40,7 +39,7 @@
                             <button type="submit" formmethod="post" class="btn btn-sm btn-primary">
                                 <i class="fa fa-dot-circle-o"></i> 등록</button>
                             &nbsp;
-                            <button type="reset" class="btn btn-sm btn-danger">
+                            <button type="button" th:formaction="@{/board/{category}(category=${category})}" class="btn btn-sm btn-danger">
                                 <i class="fa fa-ban"></i> 취소</button>
                         </div>
                     </div>

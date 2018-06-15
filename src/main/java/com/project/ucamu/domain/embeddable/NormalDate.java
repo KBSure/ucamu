@@ -2,7 +2,6 @@ package com.project.ucamu.domain.embeddable;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
