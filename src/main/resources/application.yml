@@ -1,11 +1,15 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: true
     properties:
           hibernate:
             format_sql: true
+            type:
+              descriptor:
+                sql:
+                  BasicBinder: TRACE
   thymeleaf:
     cache: false
     check-template: true
@@ -20,10 +24,13 @@ spring:
     # view-names:
 
   datasource:
-    url: jdbc:mysql://localhost:3306/ucamu
+    url: jdbc:h2:mem:ucamu;DB_CLOSE_DELAY=-1
     username: kbsure
     password: kbsure
-
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
 
 image:
   path: ~/image
