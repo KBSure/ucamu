@@ -87,7 +87,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.3.0'
 	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.5")
-	compile 'org.thymeleaf.extras:thymeleaf-extras-java8time'
+	compile 'org.thymeleaf.extras:thymeleaf-extras-java8time' //java8 이상 필요
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile("com.querydsl:querydsl-sql-spatial:${querydslVersion}")
 	compile("com.querydsl:querydsl-jpa:${querydslVersion}")

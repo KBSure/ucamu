@@ -154,10 +154,10 @@
                                 <tbody>
                                 <tr th:each="board, iterstat : ${boardList}">
                                     <th scope="row"></th>
-                                    <td th:text="${board.title}">Mark</td>
-                                    <td th:text="${board.user.nickname}">Otto</td>
-                                    <td th:text="${board.view}">@mdo</td>
-                                    <td th:text="${board.date}">@mdo</td>
+                                    <td><a th:href="@{'/board/free/' + ${board.id}}"><span th:text="${board.title}">제목</span></a></td>
+                                    <td><span th:text="${board.user.nickname}">닉네임</span></td>
+                                    <td><span th:text="${board.view}">조회수</span></td>
+                                    <td><span th:text="${#temporals.format(board.date.regDate, 'yyyy-MM-dd HH:mm')}">작성 날짜</span></td>
                                 </tr>
                                 </tbody>
                             </table>
