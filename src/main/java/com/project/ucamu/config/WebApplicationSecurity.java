@@ -13,17 +13,18 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                .requestMatchers(new AntPathRequestMatcher("/coreui/**"))
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+                .requestMatchers(new AntPathRequestMatcher("/coreui/**"));
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/boards").and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board")
+                .and()
                 .authorizeRequests()
                 .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
                 .antMatchers("/board/**").permitAll()
+                .antMatchers("/user/join/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
