@@ -40,6 +40,10 @@ public class Board implements Serializable {
     @JoinColumn(name = "BOARD_id")
         private List<Image> imageList; // 있으면 넣고, 없으면 비워두기
 
+    public void setUpView(){
+        this.view++;
+    }
+
     public void addComment(Comment comment){
         this.commentList.add(comment);
     }

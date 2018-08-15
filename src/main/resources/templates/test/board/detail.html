@@ -159,14 +159,17 @@
                                     <li class="breadcrumb-menu d-md-down-none">
                                         <div class="btn-group" role="group" aria-label="Button group">
                                             <a class="btn" href="javascript:" th:text="${board.great}">
-                                                <i class="icon-graph"></i> &nbsp;17</a>
+                                                <i class="icon-graph"></i> &nbsp;-12</a>
                                             <a class="btn" href="javascript:" th:text="${board.view}">
-                                                <i class="icon-settings"></i> &nbsp;2342</a>
+                                                <i class="icon-settings"></i> &nbsp;-1234</a>
                                         </div>
                                     </li>
                                 </ol>
                             </nav>
                             <div class="container" style="max-width: 97%;">
+                                <a href="/board/free/write" class="btn btn-sm btn-primary">
+                                    <!--본인의 경우에만 수정 삭제 버튼 보이도록-->
+                                    <i class="fa fa-dot-circle-o"></i> 수정</a>
                                 <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
                                 <p th:text="'언제 : ' + ${board.content.when}">언제 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
                                 <p th:text="'어디서 : ' + ${board.content.where}">어디서 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
