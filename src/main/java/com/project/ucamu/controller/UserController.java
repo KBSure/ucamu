@@ -5,11 +5,15 @@ import com.project.ucamu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -25,8 +29,14 @@ public class UserController {
     }
 
     @PostMapping(path = "/join")
-    public String postJoin(@Valid UserFormDto userFormDto){
-        userService.addUser(userFormDto);
-        return "redirect:/";
+    public String postJoin(@Valid UserFormDto userFormDto, BindingResult result, RedirectAttributes flash){
+//        if(result.hasErrors()){
+//            List<FieldError> fieldErrors = result.getFieldErrors();
+//            flash.addAttribute("fieldErrors", fieldErrors);
+//            flash.addAttribute("userFormDto", userFormDto);
+//            return "redirect:/user/join";
+//        }
+        userService.addUser(userFormDto); //save된 User 리턴 받음
+        return "redirect:/board/free"; //임시
     }
 }

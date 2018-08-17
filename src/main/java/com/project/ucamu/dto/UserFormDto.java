@@ -22,7 +22,7 @@ public class UserFormDto {
     String rePassword;
     @NotBlank
     @Size(max = 8, message = "8자 이하로 작성해주세요.")
-    String nickName;
+    String nickname;
     @NotBlank
     @Size(min= 2, max = 10, message = "2자에서 10자 사이의 값만 가능합니다.")
     String name;

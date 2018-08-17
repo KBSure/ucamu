@@ -162,8 +162,8 @@
                                 <input type="text" class="form-control" th:field="*{name}" placeholder="2자에서 10자 사이의 값만 가능합니다.">
                             </div>
                             <div class="form-group">
-                                <label th:for="nickName">닉네임</label>
-                                <input type="text" class="form-control" th:field="*{nickName}" placeholder="8자 이하로 작성해주세요.">
+                                <label th:for="nickname">닉네임</label>
+                                <input type="text" class="form-control" th:field="*{nickname}" placeholder="8자 이하로 작성해주세요.">
                             </div>
                             <div class="form-group">
                                 <label th:for="email">이메일</label>
@@ -177,7 +177,7 @@
                             <button type="submit" formmethod="post" class="btn btn-sm btn-primary">
                                 <i class="fa fa-dot-circle-o"></i> 등록</button>
                             &nbsp;
-                            <a th:href="@{/board/{category}(category=${category})}" class="btn btn-sm btn-danger">
+                            <a href="javascript:" class="btn btn-sm btn-danger">
                                 <i class="fa fa-ban"></i> 취소</a>
                         </div>
                     </div>
