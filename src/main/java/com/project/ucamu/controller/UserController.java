@@ -37,6 +37,11 @@ public class UserController {
 //            return "redirect:/user/join";
 //        }
         userService.addUser(userFormDto); //save된 User 리턴 받음
-        return "redirect:/board/free"; //임시
+        return "redirect:/user/login"; //임시
+    }
+
+    @GetMapping(path = "/login")
+    public String getLogin(){
+        return "test/user/login";
     }
 }

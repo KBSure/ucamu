@@ -32,6 +32,13 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
 //                .ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().disable()
                 .and().formLogin()
+                .loginPage("/user/login")
+                .loginProcessingUrl("/user/login")
+                .usernameParameter("idName")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .failureUrl("/user/login")
+                .permitAll()
 //                .and().rememberMe().tokenRepository(simpleBoardTokenRepositoryImpl).rememberMeParameter("remember-me").tokenValiditySeconds(1209600)
                 .and().logout().permitAll();
     }
