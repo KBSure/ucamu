@@ -33,10 +33,10 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and().headers().frameOptions().disable()
                 .and().formLogin()
                 .loginPage("/user/login")
-                .loginProcessingUrl("/user/login")
+//                .loginProcessingUrl("/user/login")
                 .usernameParameter("idName")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/board/free") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
                 .failureUrl("/user/login")
                 .permitAll()
 //                .and().rememberMe().tokenRepository(simpleBoardTokenRepositoryImpl).rememberMeParameter("remember-me").tokenValiditySeconds(1209600)
