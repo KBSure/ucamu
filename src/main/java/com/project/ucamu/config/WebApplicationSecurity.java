@@ -19,7 +19,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board")
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board/free") //임시
                 .and()
                 .authorizeRequests()
                 .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()

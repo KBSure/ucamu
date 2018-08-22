@@ -44,4 +44,5 @@ public class UserController {
     public String getLogin(){
         return "test/user/login";
     }
+
 }
