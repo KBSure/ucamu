@@ -26,173 +26,182 @@
     <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>-->
 </head>
 <body th:fragment="body" class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-<header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-        <h2>유 카 뮤</h2>
-        <!--<img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">-->
-        <!--<img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">-->
-    </a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="nav navbar-nav d-md-down-none">
-        <li class="nav-item px-3">
-            <a class="nav-link" href="#">고루보기</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <!--<img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">-->
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header text-center">
-                    <strong>Account</strong>
-                </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-bell-o"></i> Updates
-                    <span class="badge badge-info">42</span>
+    <header class="app-header navbar">
+        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <h2>유 카 뮤</h2>
+            <!--<img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">-->
+            <!--<img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">-->
+        </a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav d-md-down-none">
+            <li class="nav-item px-3">
+                <a class="nav-link" href="#">고루보기</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <!--<img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">-->
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-envelope-o"></i> Messages
-                    <span class="badge badge-success">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-tasks"></i> Tasks
-                    <span class="badge badge-danger">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-comments"></i> Comments
-                    <span class="badge badge-warning">42</span>
-                </a>
-                <div class="dropdown-header text-center">
-                    <strong>Settings</strong>
-                </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-user"></i> Profile</a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-wrench"></i> Settings</a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-usd"></i> Payments
-                    <span class="badge badge-dark">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-file"></i> Projects
-                    <span class="badge badge-primary">42</span>
-                </a>
-                <div class="divider"></div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-shield"></i> Lock Account</a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-lock"></i> Logout</a>
-            </div>
-        </li>
-    </ul>
-    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</header>
-<div class="app-body">
-    <div class="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="nav">
-                <li class="nav-title">유카뮤니티</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-drop"></i> 자유 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 사진 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 이슈 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 팁 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 고민 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 질문 </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="nav-icon icon-pencil"></i> 토론 </a>
-                </li>
-                <!--<li class="divider"></li>-->
-            </ul>
-        </nav>
-    </div>
-    <main class="main">
-        <div class="container-fluid">
-            <div class="animated fadeIn">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>자유게시판</strong>
-                        <small>글읽기</small>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header text-center">
+                        <strong>Account</strong>
                     </div>
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h2 th:text="${board.title}">제목</h2>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-bell-o"></i> Updates
+                        <span class="badge badge-info">42</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-envelope-o"></i> Messages
+                        <span class="badge badge-success">42</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-tasks"></i> Tasks
+                        <span class="badge badge-danger">42</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-comments"></i> Comments
+                        <span class="badge badge-warning">42</span>
+                    </a>
+                    <div class="dropdown-header text-center">
+                        <strong>Settings</strong>
+                    </div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-user"></i> Profile</a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-wrench"></i> Settings</a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-usd"></i> Payments
+                        <span class="badge badge-dark">42</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-file"></i> Projects
+                        <span class="badge badge-primary">42</span>
+                    </a>
+                    <div class="divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-shield"></i> Lock Account</a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-lock"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+        <ul sec:authorize="isAuthenticated()" class="nav navbar-nav d-md-down-none">
+            <li class="nav-item px-3">
+                <a class="nav-link" th:href="@{/user/info}" th:text="${loginUser.nickname}"></a>님 환영합니다.
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+            </li>
+        </ul>
+
+        <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </header>
+    <div class="app-body">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">유카뮤니티</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-drop"></i> 자유 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 사진 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 이슈 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 팁 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 고민 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 질문 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-pencil"></i> 토론 </a>
+                    </li>
+                    <!--<li class="divider"></li>-->
+                </ul>
+            </nav>
+        </div>
+        <main class="main">
+            <div class="container-fluid">
+                <div class="animated fadeIn">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>자유게시판</strong>
+                            <small>글읽기</small>
                         </div>
-                        <div class="jumbotron jumbotron-fluid" style="padding-top:3px">
-                            <nav aria-label="breadcrumb" role="navigation">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="javascript:"th:text="${board.user.nickname}"></a>님
-                                    </li>
-                                    <li class="breadcrumb-item">
-                                        <small th:text="${#temporals.format(board.date.regDate, 'yyyy/MM/dd HH:mm')}"></small>
-                                    </li>
-                                    <li class="breadcrumb-menu d-md-down-none">
-                                        <div class="btn-group" role="group" aria-label="Button group">
-                                            <a class="btn" href="javascript:" th:text="${board.great}">
-                                                <i class="icon-graph"></i> &nbsp;-12</a>
-                                            <a class="btn" href="javascript:" th:text="${board.view}">
-                                                <i class="icon-settings"></i> &nbsp;-1234</a>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </nav>
-                            <div class="container" style="max-width: 97%;">
-                                <a href="/board/free/write" class="btn btn-sm btn-primary">
-                                    <!--본인의 경우에만 수정 삭제 버튼 보이도록-->
-                                    <i class="fa fa-dot-circle-o"></i> 수정</a>
-                                <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
-                                <p th:text="'언제 : ' + ${board.content.when}">언제 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
-                                <p th:text="'어디서 : ' + ${board.content.where}">어디서 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
-                                <p th:text="'무엇을 : ' + ${board.content.what}">무엇을 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
-                                <p th:text="'어떻게 : ' + ${board.content.how}">어떻게 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
-                                <p th:text="'왜 : ' + ${board.content.why}">왜 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h2 th:text="${board.title}">제목</h2>
+                            </div>
+                            <div class="jumbotron jumbotron-fluid" style="padding-top:3px">
+                                <nav aria-label="breadcrumb" role="navigation">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="javascript:"th:text="${board.user.nickname}"></a>님
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <small th:text="${#temporals.format(board.date.regDate, 'yyyy/MM/dd HH:mm')}"></small>
+                                        </li>
+                                        <li class="breadcrumb-menu d-md-down-none">
+                                            <div class="btn-group" role="group" aria-label="Button group">
+                                                <a class="btn" href="javascript:" th:text="${board.great}">
+                                                    <i class="icon-graph"></i> &nbsp;-12</a>
+                                                <a class="btn" href="javascript:" th:text="${board.view}">
+                                                    <i class="icon-settings"></i> &nbsp;-1234</a>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </nav>
+                                <div class="container" style="max-width: 97%;">
+                                    <a href="/board/free/write" class="btn btn-sm btn-primary">
+                                        <!--본인의 경우에만 수정 삭제 버튼 보이도록-->
+                                        <i class="fa fa-dot-circle-o"></i> 수정</a>
+                                    <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
+                                    <p th:text="'언제 : ' + ${board.content.when}">언제 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                    <p th:text="'어디서 : ' + ${board.content.where}">어디서 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                    <p th:text="'무엇을 : ' + ${board.content.what}">무엇을 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                    <p th:text="'어떻게 : ' + ${board.content.how}">어떻게 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                    <p th:text="'왜 : ' + ${board.content.why}">왜 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
         </div>
-    </main>
-</div>
-<footer class="app-footer">
-    <div>
-        <a href="#">UCaMu</a>
-        <span>© 2018 creativeLabs.</span>
-    </div>
-    <div class="ml-auto">
-        <span>Developed by</span>
-        <a href="#">김병수</a>
-    </div>
-</footer>
+    <footer class="app-footer">
+        <div>
+            <a href="#">UCaMu</a>
+            <span>© 2018 creativeLabs.</span>
+        </div>
+        <div class="ml-auto">
+            <span>Developed by</span>
+            <a href="#">김병수</a>
+        </div>
+        </footer>
 </body>
 </html>

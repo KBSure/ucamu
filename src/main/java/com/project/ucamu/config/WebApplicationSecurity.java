@@ -23,6 +23,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
+                .antMatchers("/board/**/write").hasRole("USER")
                 .antMatchers("/board/**").permitAll()
                 .antMatchers("/user/join/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
