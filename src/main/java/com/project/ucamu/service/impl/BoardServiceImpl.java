@@ -49,10 +49,10 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional
     public Board getBoard(Long boardId) {
         Board board = boardRepository.findById(boardId).get();
         board.setUpView();
-        //board를 boardRepository 이용해서 수정
         return board;
     }
 
