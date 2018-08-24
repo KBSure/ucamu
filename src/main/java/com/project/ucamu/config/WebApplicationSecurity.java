@@ -20,26 +20,24 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board/free") //임시
-                .and()
-                .authorizeRequests()
-                .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
-                .antMatchers("/board/**/write").hasRole("USER")
-                .antMatchers("/board/**").permitAll()
-                .antMatchers("/user/join/**").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and()
-                .csrf().ignoringAntMatchers("/**")
+                .and().authorizeRequests()
+                    .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
+                    .antMatchers("/board/free/write").hasRole("USER")
+                    .antMatchers("/board/**").permitAll()
+                    .antMatchers("/user/join/**").permitAll()
+                    .antMatchers("/h2-console/**").permitAll()
+                    .anyRequest().fullyAuthenticated()
+                .and().csrf().ignoringAntMatchers("/**")
 //                .ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().disable()
                 .and().formLogin()
-                .loginPage("/user/login")
-//                .loginProcessingUrl("/user/login")
-                .usernameParameter("idName")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/board/free") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
-                .failureUrl("/user/login")
-                .permitAll()
+                    .loginPage("/user/login")
+    //                .loginProcessingUrl("/user/login")
+                    .usernameParameter("idName")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/board/free") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
+                    .failureUrl("/user/login")
+                    .permitAll()
 //                .and().rememberMe().tokenRepository(simpleBoardTokenRepositoryImpl).rememberMeParameter("remember-me").tokenValiditySeconds(1209600)
                 .and().logout().permitAll();
     }

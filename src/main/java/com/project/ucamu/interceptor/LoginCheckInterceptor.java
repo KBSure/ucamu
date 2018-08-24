@@ -24,8 +24,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
             request.setAttribute("loginUser", user);
         }
 
-        System.out.println("LoginCheckInterceptor!!");
-
         return super.preHandle(request, response, handler);
     }
 }

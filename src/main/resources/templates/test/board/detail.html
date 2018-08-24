@@ -91,6 +91,11 @@
                 </div>
             </li>
         </ul>
+        <ul sec:authorize="!isAuthenticated()" class="nav navbar-nav d-md-down-none">
+            <li class="nav-item px-3">
+                <a class="nav-link" th:href="@{/user/login}">로그인</a>
+            </li>
+        </ul>
         <ul sec:authorize="isAuthenticated()" class="nav navbar-nav d-md-down-none">
             <li class="nav-item px-3">
                 <a class="nav-link" th:href="@{/user/info}" th:text="${loginUser.nickname}"></a>님 환영합니다.
@@ -106,7 +111,7 @@
         <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
             <span class="navbar-toggler-icon"></span>
         </button>
-        </header>
+    </header>
     <div class="app-body">
         <div class="sidebar">
             <nav class="sidebar-nav">
@@ -175,10 +180,16 @@
                                         </li>
                                     </ol>
                                 </nav>
-                                <div class="container" style="max-width: 97%;">
-                                    <a href="/board/free/write" class="btn btn-sm btn-primary">
-                                        <!--본인의 경우에만 수정 삭제 버튼 보이도록-->
+                                <div class="navbar">
+                                    <ul class="nav navbar-nav ml-auto">
+                                    </ul>
+                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" href="/board/free/write" class="btn btn-sm btn-primary">
                                         <i class="fa fa-dot-circle-o"></i> 수정</a>
+                                    &nbsp;
+                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" href="/board/free/delete" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-dot-circle-o"></i> 삭제</a>
+                                </div>
+                                <div class="container" style="max-width: 97%;">
                                     <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
                                     <p th:text="'언제 : ' + ${board.content.when}">언제 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
                                     <p th:text="'어디서 : ' + ${board.content.where}">어디서 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>

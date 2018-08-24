@@ -22,7 +22,7 @@ public class SecurityUser extends User {
 
     private static List<GrantedAuthority> makeGrantedAuthority(List<Role> roles){
         List<GrantedAuthority> list = new ArrayList<>();
-        roles.forEach(role -> list.add(new SimpleGrantedAuthority(role.getRoleName().toString()))); //저 list는 어떻게 포함되게 되지?
+        roles.forEach(role -> list.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName().toString()))); //저 list는 어떻게 포함되게 되지?
         return list;
     }
 
