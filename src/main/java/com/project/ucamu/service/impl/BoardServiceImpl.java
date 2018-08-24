@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -43,6 +44,16 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional
+    public Board updateBoard(Long boardId, BoardFormDto boardFormDto) {
+        Board oldBoard = boardRepository.findById(boardId).get();
+        BeanUtils.copyProperties(boardFormDto, oldBoard.getContent());
+        oldBoard.setTitle(oldBoard.getContent().getHow());
+        oldBoard.getDate().setRegDate(LocalDateTime.now());
+        return boardRepository.save(oldBoard);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public Category getCategory(String categoryName) {
         return categoryRepository.findCategoryByName(categoryName);
@@ -50,9 +61,9 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public Board getBoard(Long boardId) {
+    public Board getBoard(Long boardId, boolean viewUp) {
         Board board = boardRepository.findById(boardId).get();
-        board.setUpView();
+        if(viewUp) board.setUpView();
         return board;
     }
 

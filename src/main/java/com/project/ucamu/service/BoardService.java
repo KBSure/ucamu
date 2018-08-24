@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface BoardService {
     Board addBoard(Board board, BoardFormDto boardFormDto);
-    Board getBoard(Long boardId);
+    Board updateBoard(Long boardId, BoardFormDto boardFormDto);
+    Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
     List<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
     //categoryName, SortType, SearchType, SearcyStr, PageNum

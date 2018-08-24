@@ -183,7 +183,7 @@
                                 <div class="navbar">
                                     <ul class="nav navbar-nav ml-auto">
                                     </ul>
-                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" href="/board/free/write" class="btn btn-sm btn-primary">
+                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/{boardId}/rewrite(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-primary">
                                         <i class="fa fa-dot-circle-o"></i> 수정</a>
                                     &nbsp;
                                     <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" href="/board/free/delete" class="btn btn-sm btn-danger">

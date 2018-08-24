@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 //import java.security.Principal;
 
@@ -46,24 +48,39 @@ public class BoardController {
 
     //category가 유효하지 않도록 접근 한 경우 예외 처리 해야 한다.
     @PostMapping(path = "/{category}/write")
-    public String postWrite(@Valid BoardFormDto boardFormDto, @PathVariable(value = "category") String categoryName){
+    public String postWrite(@Valid BoardFormDto boardFormDto, @PathVariable(value = "category") String categoryName, Principal principal){
 
-        User user = userService.getUser("kbs");
-//      User user = userService.getUser(principal.getName());
+        //        User user = userService.getUser((User)request.getAttribute("loginUser").getId());
+        User user = userService.getUser(principal.getName());
         Board board = new Board();
         board.setUser(user);
         board.setCategory(boardService.getCategory(categoryName));
         Board saveBoard = boardService.addBoard(board, boardFormDto);
-        return "redirect:/board/" + categoryName + "/"+  saveBoard.getId() + "";
+        return "redirect:/board/" + categoryName + "/"+  saveBoard.getId();
     }
 
     @GetMapping(path = "/{category}/{boardId}")
     public String getDetail(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ModelMap modelMap){
         //boardId에 해당하는 board Entity을 불러와야 한다. (카테고리 체크를 해봐도 좋다)
-        Board board = boardService.getBoard(boardId);
+        Board board = boardService.getBoard(boardId, true);
         modelMap.addAttribute(board);
 //        return "board/detail";
         return "test/board/detail";
+    }
+
+    @GetMapping(path = "/{category}/{boardId}/rewrite")
+    public String getRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ModelMap modelMap){
+        Board board = boardService.getBoard(boardId, false);
+        modelMap.addAttribute(board);
+        modelMap.addAttribute("category", categoryName);
+        modelMap.addAttribute(new BoardFormDto());
+        return "test/board/rewrite";
+    }
+
+    @PostMapping(path = "/{category}/{boardId}/rewrite")
+    public String postRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, BoardFormDto boardFormDto){
+        boardService.updateBoard(boardId, boardFormDto);
+        return "redirect:/board/" + categoryName + "/" + boardId;
     }
 
 }
