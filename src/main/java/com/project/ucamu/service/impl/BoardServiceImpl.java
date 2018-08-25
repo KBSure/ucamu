@@ -49,7 +49,7 @@ public class BoardServiceImpl implements BoardService {
         Board oldBoard = boardRepository.findById(boardId).get();
         BeanUtils.copyProperties(boardFormDto, oldBoard.getContent());
         oldBoard.setTitle(oldBoard.getContent().getHow());
-        oldBoard.getDate().setRegDate(LocalDateTime.now());
+        oldBoard.getDate().setUpDate(LocalDateTime.now());
         return boardRepository.save(oldBoard);
     }
 
@@ -96,9 +96,9 @@ public class BoardServiceImpl implements BoardService {
             case NEW:
                 return Sort.by(Sort.Direction.DESC, "id");
             case GREAT:
-                return Sort.by(Sort.Direction.ASC, "great");
+                return Sort.by(Sort.Direction.DESC, "great");
             case VIEW:
-                return Sort.by(Sort.Direction.ASC, "view");
+                return Sort.by(Sort.Direction.DESC, "view");
 //            default : //잘못된 sortType이 넘어왔을 때
         }
         return Sort.by(Sort.Direction.DESC, "id");

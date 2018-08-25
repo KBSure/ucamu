@@ -44,7 +44,7 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
         if(categoryName == null){
             return query;
         }else{
-            return query;
+            return query.where(qBoard.category.name.equalsIgnoreCase(categoryName));
         }
     }
 
@@ -72,7 +72,7 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
                     return query.where(qBoard.content.why.like("%" + searchStr + "%"));
 //            case CONTENT: //where의 파라미터로 6개 predicate 다 넣는가?
                 case USER:
-                    return query.where(qBoard.user.nickname.equalsIgnoreCase(searchStr));
+                    return query.where(qBoard.user.nickname.equalsIgnoreCase(searchStr)); //닉네임 중복검사 할 때 대소문자 구분 없도록
             }
         }
         return query;
