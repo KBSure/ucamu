@@ -5,6 +5,7 @@ import com.project.ucamu.domain.QBoard;
 import com.project.ucamu.repository.custom.BoardRepositoryCustom;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
@@ -30,14 +31,15 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
     }
 
     @Override
-    public List<Board> findBoardList(String categoryName, Pageable pageable, String searchType, String searchStr) {
+    public Page<Board> findBoardList(String categoryName, Pageable pageable, String searchType, String searchStr) {
         QBoard qBoard = QBoard.board;
         JPQLQuery<Board> query = from(qBoard);
 
         query = whereSearch(query, qBoard, searchType, searchStr);
         query = whereCategory(query, qBoard, categoryName);
-
-        return getQuerydsl().applyPagination(pageable, query).fetch();
+        List<Board> boardList = getQuerydsl().applyPagination(pageable, query).fetch();
+        long fetchCount = query.fetchCount();
+        return new PageImpl<>(boardList, pageable, fetchCount);
     }
 
     private JPQLQuery<Board> whereCategory(JPQLQuery<Board> query, QBoard qBoard, String categoryName){
@@ -49,12 +51,12 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
     }
 
     private JPQLQuery<Board> whereSearch(JPQLQuery<Board> query, QBoard qBoard, String searchType, String searchStr){
-        if(searchType == null){ //최초 list
+        if(searchType == null || "".equals(searchType)){ //최초 list
             return query;
         }
 
         String searchTypeUpper = searchType.toUpperCase();
-        if(searchStr != null) {
+        if(searchStr != null || "".equals(searchStr)) {
             switch (SearchType.valueOf(searchTypeUpper)) {
                 case TITLE:
                     return query.where(qBoard.title.like("%" + searchStr + "%"));

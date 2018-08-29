@@ -10,6 +10,7 @@ import com.project.ucamu.repository.CategoryRepository;
 import com.project.ucamu.service.BoardService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -68,7 +69,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum) {
+    public Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum) {
         //sort시킨 것, Search관련, pageNum
         //sortType에는 우선 최신순, 공감순, 조회순으로 할 것
 
@@ -76,9 +77,8 @@ public class BoardServiceImpl implements BoardService {
         if(pageNum == null){
             pageNum = 1;
         }
-        Pageable pageable = PageRequest.of(pageNum - 1, 10, sort);
+        Pageable pageable = PageRequest.of(pageNum - 1, 15, sort);
 
-         //조건에 해당되는 boardList를 뽑아온다. custom한다.
         return boardRepository.findBoardList(categoryName, pageable, searchType, searchStr);
 
     }
@@ -88,7 +88,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     private Sort createSort(String sortType){
-        if(sortType == null){
+        if(sortType == null || "".equals(sortType)){
             return Sort.by(Sort.Direction.DESC, "id");
         }
         String sortTypeUpper = sortType.toUpperCase();

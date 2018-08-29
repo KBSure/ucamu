@@ -1,16 +1,18 @@
 package com.project.ucamu.controller;
 
+import com.project.ucamu.common.Pagination;
 import com.project.ucamu.domain.Board;
 import com.project.ucamu.domain.User;
 import com.project.ucamu.dto.BoardFormDto;
+import com.project.ucamu.dto.SearchStyle;
 import com.project.ucamu.service.BoardService;
 import com.project.ucamu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -30,10 +32,15 @@ public class BoardController {
     public String getBoardList(@PathVariable(value = "category")String categoryName, @RequestParam(name = "sortType", required = false)String sortType,
                                @RequestParam(name = "searchType", required = false)String searchType, @RequestParam(name = "searchStr", required = false)String searchStr,
                                @RequestParam(name = "pageNum", required = false)Integer pageNum, ModelMap modelMap){
-        modelMap.addAttribute("category", categoryName);
 //해당 카테고리의 리스트들을 페이징처리 해서 boardList를 modelMap에 넘긴다.
-        List<Board> boardList = boardService.getBoardList(categoryName, sortType, searchType, searchStr, pageNum);//categoryName, SortType, SearchType, SearcyStr, PageNum
+        Page<Board> boardPage = boardService.getBoardList(categoryName, sortType, searchType, searchStr, pageNum);//categoryName, SortType, SearchType, SearcyStr, PageNum
+        List<Board> boardList = boardPage.getContent();
+
+        Pagination pagination = new Pagination(boardPage.getNumber() + 1, 10, boardPage.getTotalElements(), boardPage.getTotalPages());
+        modelMap.addAttribute("category", categoryName);
         modelMap.addAttribute(boardList);
+        modelMap.addAttribute(pagination);
+        modelMap.addAttribute(new SearchStyle(categoryName, sortType, searchType, searchStr));
 //        return "board/list";
         return "test/board/list";
     }

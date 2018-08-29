@@ -3,6 +3,7 @@ package com.project.ucamu.service;
 import com.project.ucamu.domain.Board;
 import com.project.ucamu.domain.Category;
 import com.project.ucamu.dto.BoardFormDto;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface BoardService {
     Board updateBoard(Long boardId, BoardFormDto boardFormDto);
     Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
-    List<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
+    Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
     //categoryName, SortType, SearchType, SearcyStr, PageNum
 
 }
