@@ -37,7 +37,7 @@ public class BoardController {
         List<Board> boardList = boardPage.getContent();
 
         Pagination pagination = new Pagination(boardPage.getNumber() + 1, 10, boardPage.getTotalElements(), boardPage.getTotalPages());
-        modelMap.addAttribute("category", categoryName);
+        modelMap.addAttribute("category", boardService.getCategory(categoryName));
         modelMap.addAttribute(boardList);
         modelMap.addAttribute(pagination);
         modelMap.addAttribute(new SearchStyle(categoryName, sortType, searchType, searchStr));

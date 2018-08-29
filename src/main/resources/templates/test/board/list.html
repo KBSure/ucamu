@@ -165,10 +165,23 @@
                 <div class="animated fadeIn">
                     <div class="card">
                         <div class="card-header">
-                            <strong>자유게시판</strong>
+                            <strong th:text="${category.nameKr} + '게시판'"></strong>
                             <small>글목록</small>
                         </div>
                         <div class="card-body">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="sortType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span th:if="${searchStyle.sortType == 'NEW' || searchStyle.sortType == null}">최신순</span>
+                                    <span th:if="${searchStyle.sortType == 'VIEW'}">조회순</span>
+                                    <span th:if="${searchStyle.sortType == 'GREAT'}">추천순</span>
+                                </button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
+                                    <h6 class="dropdown-header">정렬 조건</h6>
+                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='NEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">최신순</a>
+                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='VIEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">조회순</a>
+                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='GREAT', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">추천순</a>
+                                </div>
+                            </div>
                             <table class="table table-sm">
                                 <thead>
                                 <tr>
@@ -208,22 +221,22 @@
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <div class="col-md-4 ">
                                             <div class="input-group ">
-                                                    <div class="input-group-prepend">
-                                                        <select class="form-control" id="searchType" name="searchType">
-                                                            <option value="TITLE">제목검색</option>
-                                                            <option value="WHO">Who검색</option>
-                                                            <option value="WHEN">When검색</option>
-                                                            <option value="WHERE">Where검색</option>
-                                                            <option value="WHAT">What검색</option>
-                                                            <option value="HOW">How검색</option>
-                                                            <option value="WHY">Why검색</option>
-                                                            <option value="USER">작성자검색</option>
-                                                        </select>
-                                                    </div>
-                                                    <input type="search" id="searchStr" name="searchStr" class="form-control" placeholder="검색어를 입력하세요.">
-                                                    <span class="input-group-append">
-                                                        <button class="btn btn-light active" aria-pressed="true">검색</button>
-                                                    </span>
+                                                <div class="input-group-prepend">
+                                                    <select class="form-control" id="searchType" name="searchType">
+                                                        <option value="TITLE" th:selected="${searchStyle.searchType == 'TITLE'}">제목검색</option>
+                                                        <option value="WHO" th:selected="${searchStyle.searchType == 'WHO'}">Who검색</option>
+                                                        <option value="WHEN" th:selected="${searchStyle.searchType == 'WHEN'}">When검색</option>
+                                                        <option value="WHERE" th:selected="${searchStyle.searchType == 'WHERE'}">Where검색</option>
+                                                        <option value="WHAT" th:selected="${searchStyle.searchType == 'WHAT'}">What검색</option>
+                                                        <option value="HOW" th:selected="${searchStyle.searchType == 'HOW'}">How검색</option>
+                                                        <option value="WHY" th:selected="${searchStyle.searchType == 'WHY'}">Why검색</option>
+                                                        <option value="USER" th:selected="${searchStyle.searchType == 'USER'}">작성자검색</option>
+                                                    </select>
+                                                </div>
+                                                <input type="search" id="searchStr" name="searchStr" class="form-control" placeholder="검색어를 입력하세요." th:value="${searchStyle.searchStr}">
+                                                <span class="input-group-append">
+                                                    <button class="btn btn-light active" aria-pressed="true">검색</button>
+                                                </span>
                                             </div>
                                         </div>
                                         <ul class="nav navbar-nav ml-auto">
