@@ -22,7 +22,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board/free") //임시
                 .and().authorizeRequests()
                     .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
-                    .antMatchers("/board/free/write").hasRole("USER")
+                    .antMatchers("/board/**/write").hasRole("USER")
                     .antMatchers("/board/**").permitAll()
                     .antMatchers("/user/join/**").permitAll()
                     .antMatchers("/h2-console/**").permitAll()

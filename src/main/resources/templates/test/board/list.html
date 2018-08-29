@@ -128,31 +128,31 @@
                 <ul class="nav">
                     <li class="nav-title">유카뮤니티</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/free">
                             <i class="nav-icon icon-drop"></i> 자유 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/picture">
                             <i class="nav-icon icon-pencil"></i> 사진 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/issue">
                             <i class="nav-icon icon-pencil"></i> 이슈 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/tip">
                             <i class="nav-icon icon-pencil"></i> 팁 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/worry">
                             <i class="nav-icon icon-pencil"></i> 고민 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/question">
                             <i class="nav-icon icon-pencil"></i> 질문 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/board/discussion">
                             <i class="nav-icon icon-pencil"></i> 토론 </a>
                     </li>
                     <!--<li class="divider"></li>-->
@@ -169,17 +169,20 @@
                             <small>글목록</small>
                         </div>
                         <div class="card-body">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="sortType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span th:if="${searchStyle.sortType == 'NEW' || searchStyle.sortType == null}">최신순</span>
-                                    <span th:if="${searchStyle.sortType == 'VIEW'}">조회순</span>
-                                    <span th:if="${searchStyle.sortType == 'GREAT'}">추천순</span>
-                                </button>
-                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
-                                    <h6 class="dropdown-header">정렬 조건</h6>
-                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='NEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">최신순</a>
-                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='VIEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">조회순</a>
-                                    <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='GREAT', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">추천순</a>
+                            <div class="float-right">
+                                <ul class="nav navbar-nav ml-auto"></ul>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-secondary dropdown-toggle btn-light active" aria-pressed="true" type="button" id="sortType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span th:if="${searchStyle.sortType == 'NEW' || searchStyle.sortType == null}">최신순</span>
+                                        <span th:if="${searchStyle.sortType == 'VIEW'}">조회순</span>
+                                        <span th:if="${searchStyle.sortType == 'GREAT'}">추천순</span>
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
+                                        <h6 class="dropdown-header">정렬 조건</h6>
+                                        <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='NEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">최신순</a>
+                                        <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='VIEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">조회순</a>
+                                        <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='GREAT', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">추천순</a>
+                                    </div>
                                 </div>
                             </div>
                             <table class="table table-sm">
@@ -241,7 +244,7 @@
                                         </div>
                                         <ul class="nav navbar-nav ml-auto">
                                         </ul>
-                                        <a th:href="@{/board/{category}/write(category=${searchStyle.categoryName})}" class="btn btn-primary active" aria-pressed="true">글쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a th:href="@{/board/{category}/write(category=${searchStyle.categoryName})}" class="btn btn-primary" aria-pressed="true">글쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </div>
                                 </form>
                             </nav>
