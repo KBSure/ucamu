@@ -24,11 +24,11 @@ public class Board implements Serializable {
         private Long view; //0
         private Integer great; //0
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}) //단방향
     @JoinColumn(name = "USER_id")
         private User user; //session 정보
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}) //단방향
     @JoinColumn(name = "CATEGORY_id")
         private Category category; //path 내의 카테고리 : board/free
 

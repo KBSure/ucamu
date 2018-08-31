@@ -84,6 +84,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional
     public boolean deleteBoard(Long boardId) {
         boardRepository.deleteById(boardId);
         return true;
