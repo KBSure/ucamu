@@ -1,10 +1,12 @@
 package com.project.ucamu.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -36,9 +38,20 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
                     .usernameParameter("idName")
                     .passwordParameter("password")
                     .defaultSuccessUrl("/board/free") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
+                    .successHandler(customAuthenticationSuccessHandler())
                     .failureUrl("/user/login")
                     .permitAll()
 //                .and().rememberMe().tokenRepository(simpleBoardTokenRepositoryImpl).rememberMeParameter("remember-me").tokenValiditySeconds(1209600)
                 .and().logout().permitAll();
+    }
+
+    @Bean
+    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler(){
+        CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler = new CustomAuthenticationSuccessHandler();
+        customAuthenticationSuccessHandler.setUseReferer(true);
+        customAuthenticationSuccessHandler.setDefaultTargetUrl("/board/free");
+        customAuthenticationSuccessHandler.setTargetUrlParameter("loginRedirect");
+
+        return customAuthenticationSuccessHandler;
     }
 }

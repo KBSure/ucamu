@@ -93,6 +93,9 @@
         </ul>
         <ul sec:authorize="!isAuthenticated()" class="nav navbar-nav d-md-down-none">
             <li class="nav-item px-3">
+                <a class="nav-link" th:href="@{/user/join}">회원가입</a>
+            </li>
+            <li class="nav-item px-3">
                 <a class="nav-link" th:href="@{/user/login}">로그인</a>
             </li>
         </ul>
@@ -186,7 +189,7 @@
                                     <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/{boardId}/rewrite(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-primary">
                                         <i class="fa fa-dot-circle-o"></i> 수정</a>
                                     &nbsp;
-                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/delete(category=${board.category.name})}" class="btn btn-sm btn-danger">
+                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/{boardId}/delete(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-danger">
                                         <i class="fa fa-dot-circle-o"></i> 삭제</a>
                                 </div>
                                 <div class="container" style="max-width: 97%;">

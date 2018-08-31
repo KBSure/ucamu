@@ -90,4 +90,10 @@ public class BoardController {
         return "redirect:/board/" + categoryName + "/" + boardId;
     }
 
+    @GetMapping(path = "/{category}/{boardId}/delete")
+    public String getDelete(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId){
+        boardService.deleteBoard(boardId);
+        return "redirect:/board/" + categoryName;
+    }
+
 }

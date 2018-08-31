@@ -83,6 +83,12 @@ public class BoardServiceImpl implements BoardService {
 
     }
 
+    @Override
+    public boolean deleteBoard(Long boardId) {
+        boardRepository.deleteById(boardId);
+        return true;
+    }
+
     private enum SortType{
         NEW, GREAT, VIEW
     }

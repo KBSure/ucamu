@@ -14,6 +14,7 @@ public interface BoardService {
     Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
     Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
+    boolean deleteBoard(Long boardId);
     //categoryName, SortType, SearchType, SearcyStr, PageNum
 
 }

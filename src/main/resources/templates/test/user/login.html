@@ -93,6 +93,9 @@
         </ul>
         <ul sec:authorize="!isAuthenticated()" class="nav navbar-nav d-md-down-none">
             <li class="nav-item px-3">
+                <a class="nav-link" th:href="@{/user/join}">회원가입</a>
+            </li>
+            <li class="nav-item px-3">
                 <a class="nav-link" th:href="@{/user/login}">로그인</a>
             </li>
         </ul>
@@ -152,7 +155,7 @@
         <main class="main">
             <div class="container-fluid">
                 <div class="animated fadeIn">
-                    <form method="post" action="#" th:action="@{/user/login}">
+                    <form method="post" action="/user/login">
                         <div class="card">
                             <div class="card-header">
                                 <strong>로그인</strong>
@@ -170,9 +173,10 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" formmethod="post" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-dot-circle-o"></i> 등록</button>
+                                    <i class="fa fa-dot-circle-o"></i> 로그인</button>
+                                <input type="hidden" name="loginRedirect" th:value="${loginRedirect}">
                                 &nbsp;
-                                <a href="javascript:" class="btn btn-sm btn-danger">
+                                <a th:href="${loginRedirect}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-ban"></i> 취소</a>
                             </div>
                         </div>
