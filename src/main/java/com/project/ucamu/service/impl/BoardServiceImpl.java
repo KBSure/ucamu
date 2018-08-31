@@ -2,6 +2,7 @@ package com.project.ucamu.service.impl;
 
 import com.project.ucamu.domain.Board;
 import com.project.ucamu.domain.Category;
+import com.project.ucamu.domain.User;
 import com.project.ucamu.domain.embeddable.Content;
 import com.project.ucamu.domain.embeddable.NormalDate;
 import com.project.ucamu.dto.BoardFormDto;
@@ -87,6 +88,15 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public boolean deleteBoard(Long boardId) {
         boardRepository.deleteById(boardId);
+        return true;
+    }
+
+    @Override
+    public boolean greatBoard(Long boardId, User user) {
+        Board board = boardRepository.findById(boardId).get();
+        board.setGreat(board.getGreat() + 1);
+        board.addGreatUser(user);
+        boardRepository.save(board);
         return true;
     }
 

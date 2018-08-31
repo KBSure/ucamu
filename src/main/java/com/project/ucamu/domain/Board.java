@@ -40,6 +40,11 @@ public class Board implements Serializable {
     @JoinColumn(name = "BOARD_id")
         private List<Image> imageList; // 있으면 넣고, 없으면 비워두기
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "USER_id")
+        private List<User> greatUserList;
+
+
     public void setUpView(){
         this.view++;
     }
@@ -50,5 +55,9 @@ public class Board implements Serializable {
 
     public void addImage(Image image){
         this.imageList.add(image);
+    }
+
+    public void addGreatUser(User user) {
+        this.greatUserList.add(user);
     }
 }

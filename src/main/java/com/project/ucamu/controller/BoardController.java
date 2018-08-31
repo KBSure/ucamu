@@ -61,7 +61,7 @@ public class BoardController {
         User user = userService.getUser(principal.getName());
         Board board = new Board();
         board.setUser(user);
-        board.setCategory(boardService.getCategory(categoryName));
+        board.setCategory(boardService.getCategory(categoryName)); //잘못된 카테고리가 들어왔다면? 오류 페이지?
         Board saveBoard = boardService.addBoard(board, boardFormDto);
         return "redirect:/board/" + categoryName + "/"+  saveBoard.getId();
     }
@@ -91,9 +91,19 @@ public class BoardController {
     }
 
     @GetMapping(path = "/{category}/{boardId}/delete")
-    public String getDelete(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId){
+    public String getDelete(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, Principal principal){
         boardService.deleteBoard(boardId);
         return "redirect:/board/" + categoryName;
+    }
+
+    @GetMapping(path = "/{category}/{boardId}/great")
+    public String getGreat(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, Principal principal){
+        Board board = boardService.getBoard(boardId, false);
+        User user = board.getUser();
+        if(!board.getGreatUserList().contains(user)){
+           boardService.greatBoard(boardId, user);
+        }
+        return "redirect:/board/" + categoryName + "/" + boardId;
     }
 
 }

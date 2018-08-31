@@ -8,7 +8,6 @@
     <meta name="keyword" content="">
     <title>유카뮤 - 육하원칙 커뮤니티</title>
 
-    <!--<link th:href="@{coreui/vendors/coreui/icons/css/coreui-icons.min.css}" rel="stylesheet">-->
     <!--<link th:href="@{coreui/vendors/flag-icon-css/css/flag-icon.min.css}" rel="stylesheet">-->
     <!--<link th:href="@{coreui/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">-->
     <!--<link th:href="@{coreui/vendors/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">-->
@@ -19,7 +18,10 @@
     <link th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.css}" href="" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link th:href="@{/coreui/css/style.css}" href="" rel="stylesheet">
+    <link th:href="@{/coreui/css/coreui-icons.css}" rel="stylesheet">
+    <link th:href="@{/coreui/ie7/ie7.css}" rel="stylesheet">
 
+    <!--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">-->
     <!--<style type="text/css">/* Chart.js */-->
     <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
     <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
@@ -199,6 +201,13 @@
                                     <p th:text="'무엇을 : ' + ${board.content.what}">무엇을 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
                                     <p th:text="'어떻게 : ' + ${board.content.how}">어떻게 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
                                     <p th:text="'왜 : ' + ${board.content.why}">왜 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. </p>
+                                    <hr class="my-4">
+                                </div>
+                                <div class="container" style="max-width: 97%;">
+                                    <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                                        <a class="btn btn-primary" th:href="@{/board/{category}/{boardId}/great(category=${board.category.name}, boardId=${board.id})}">
+                                            <i class="cui-thumb-up"></i>&nbsp;추천</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
