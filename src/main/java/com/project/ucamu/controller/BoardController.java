@@ -6,6 +6,7 @@ import com.project.ucamu.domain.User;
 import com.project.ucamu.dto.BoardFormDto;
 import com.project.ucamu.dto.SearchStyle;
 import com.project.ucamu.service.BoardService;
+import com.project.ucamu.service.CommentService;
 import com.project.ucamu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +28,9 @@ public class BoardController {
 
     @Autowired
     UserService userService;
+
+//    @Autowired
+//    CommentService commentService;
 
     @GetMapping(path = "/{category}")
     public String getBoardList(@PathVariable(value = "category")String categoryName, @RequestParam(name = "sortType", required = false)String sortType,

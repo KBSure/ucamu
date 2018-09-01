@@ -6,6 +6,7 @@ INSERT INTO ROLE(id, name) VALUES(1,'ADMIN');
 INSERT INTO ROLE(id, name) VALUES(2,'USER');
 
 INSERT INTO USER(id, id_name, password, nickname, name, email, phone, reg_date, up_date, SITUATION_id) VALUES(1, 'kbs', '{noop}1234', '케이비에스', '김병수', 'test1@gmail.com', '010-1234-5678', current_timestamp, current_timestamp, 1);
+INSERT INTO USER(id, id_name, password, nickname, name, email, phone, reg_date, up_date, SITUATION_id) VALUES(2, 'mbc', '{noop}1234', '엠비씨', '마봉춘', 'test2@gmail.com', '010-1234-5679', current_timestamp, current_timestamp, 1);
 
 INSERT INTO ROLE_USER(user_id, role_id) VALUES(1,2);
 
@@ -1018,3 +1019,8 @@ INSERT INTO BOARD(id, title, content_who, content_when, content_where, content_w
 INSERT INTO BOARD(id, title, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, up_date, view, great, USER_id, CATEGORY_id) VALUES(998, '질서 없이 작성하고 있다998', '우리는', '대부분', '커뮤니티에서', '게시글을', '질서 없이 작성하고 있다.', '형식이 정해져 있지 않으니까', '2018-09-25 07:07:07', '2018-09-25 07:07:07', 1996, 5, 1, 1);
 INSERT INTO BOARD(id, title, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, up_date, view, great, USER_id, CATEGORY_id) VALUES(999, '간단하게 작성하고 있다999', '내가', '지금', '유카뮤에서', '게시글을', '간단하게 작성하고 있다.', '당신이 작성 방법을 모를까봐', '2018-09-26 07:07:07', '2018-09-26 07:07:07', 1999, 2, 1, 1);
 INSERT INTO BOARD(id, title, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, up_date, view, great, USER_id, CATEGORY_id) VALUES(1000, '질서 없이 작성하고 있다1000', '우리는', '대부분', '커뮤니티에서', '게시글을', '질서 없이 작성하고 있다.', '형식이 정해져 있지 않으니까', '2018-09-27 07:07:07', '2018-09-27 07:07:07', 1998, 3, 1, 1);
+
+INSERT INTO COMMENT(id, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, great, USER_id, BOARD_id) VALUES(1, '저도요', '요즘 커뮤니티 활동할 때', '여러 커뮤니티에서', '어수선한 느낌을', '종종 받았습니다.', '그동안 많은 커뮤니티를 접해왔기 때문에 익숙해진 것 같기도 하지만,,, 제약 없는 분위기, 질서 없는 익명의 장소라는 인식이 도를 넘은 게시글을 양산하는 것은 아닐련지.... 라는 생각도 들어서.. 그동안 많은 커뮤니티를 접해왔기 때문에 익숙해진 것 같기도 하지만,,, 제약 없는 분위기, 질서 없는 익명의 장소라는 인식이 도를 넘은 게시글을 양산하는 것은 아닐련지....', '2018-10-27 07:07:07', 2, 2, 1000);
+INSERT INTO COMMENT(id, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, great, USER_id, BOARD_id) VALUES(2, '나도', '요즘 커뮤니티 활동할 때', '여러 커뮤니티에서', '어수선한 느낌을', '종종 받았습니다.', '그동안 많은 커뮤니티를 접해왔기 때문에 익숙해진 것 같기도 하지만,,, 제약 없는 분위기, 질서 없는 익명의 장소라는 인식이 도를 넘은 게시글을 양산하는 것은 아닐련지.... 라는 생각도 들어서..', '2018-10-27 07:07:07', 1, 2, 1000);
+INSERT INTO COMMENT(id, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, great, USER_id, BOARD_id) VALUES(3, '저두', '요즘 커뮤니티 활동할 때', '여러 커뮤니티에서', '어수선한 느낌을', '종종 받았습니다.', '그동안 많은 커뮤니티를 접해왔기 때문에 익숙해진 것 같기도 하지만,,, 제약 없는 분위기, 질서 없는 익명의 장소라는 인식이 도를 넘은 게시글을 양산하는 것은 아닐련지.... 라는 생각도 들어서..', '2018-10-27 07:07:07', 1, 2, 1000);
+INSERT INTO COMMENT(id, content_who, content_when, content_where, content_what, content_how, content_why, reg_date, great, USER_id, BOARD_id) VALUES(4, '저두', '요즘 커뮤니티 활동할 때', '여러 커뮤니티에서', '어수선한 느낌을', '종종 받았습니다.', '왠진 모르겠지만~', '2018-10-27 07:07:07', 3, 2, 1000);

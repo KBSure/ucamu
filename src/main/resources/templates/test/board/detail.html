@@ -208,6 +208,43 @@
                                         <a class="btn btn-primary" th:href="@{/board/{category}/{boardId}/great(category=${board.category.name}, boardId=${board.id})}">
                                             <i class="cui-thumb-up"></i>&nbsp;추천</a>
                                     </div>
+                                    <hr class="my-4">
+                                </div>
+                                <div class="container" style="max-width: 97%;">
+                                    <i class="cui-speech"></i>&nbsp;댓글 • </a>
+                                    <!--<span th:text=""></span> 댓글 개수-->
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xl-6" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 0} ? 'none' : 'all'">
+                                            <div class="card border-success" >
+                                                <div class="card-header">
+                                                    <strong th:text="${comment.user.nickname}"></strong>님
+                                                </div>
+                                                <div class="card-body">
+                                                    <p th:text="'누가 : ' + ${comment.content.who}"></p>
+                                                    <p th:text="'언제 : ' + ${comment.content.when}"></p>
+                                                    <p th:text="'어디서 : ' + ${comment.content.where}"></p>
+                                                    <p th:text="'무엇을 : ' + ${comment.content.what}"></p>
+                                                    <p th:text="'어떻게 : ' + ${comment.content.how}"></p>
+                                                    <p th:text="'왜 : ' + ${comment.content.why}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xl-6" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 1} ? 'none' : 'all'">
+                                            <div class="card border-success">
+                                                <div class="card-header">
+                                                    <strong th:text="${comment.user.nickname}"></strong>님
+                                                </div>
+                                                <div class="card-body" >
+                                                    <p th:text="'누가 : ' + ${comment.content.who}"></p>
+                                                    <p th:text="'언제 : ' + ${comment.content.when}"></p>
+                                                    <p th:text="'어디서 : ' + ${comment.content.where}"></p>
+                                                    <p th:text="'무엇을 : ' + ${comment.content.what}"></p>
+                                                    <p th:text="'어떻게 : ' + ${comment.content.how}"></p>
+                                                    <p th:text="'왜 : ' + ${comment.content.why}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
