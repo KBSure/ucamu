@@ -93,13 +93,13 @@ public class BoardController {
     }
 
     @PostMapping(path = "/{category}/{boardId}/rewrite")
-    public String postRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ContentFormDto boardFormDto){
+    public String putRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ContentFormDto boardFormDto){
         boardService.updateBoard(boardId, boardFormDto);
         return "redirect:/board/" + categoryName + "/" + boardId;
     }
 
-    @GetMapping(path = "/{category}/{boardId}/delete")
-    public String getDelete(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, Principal principal){
+    @PostMapping(path = "/{category}/delete")
+    public String deleteDelete(@PathVariable(value = "category")String categoryName, Long boardId, Principal principal){
         boardService.deleteBoard(boardId);
         return "redirect:/board/" + categoryName;
     }
@@ -121,6 +121,12 @@ public class BoardController {
         comment.setUser(user);
         comment.setBoard(boardService.getBoard(boardId, false));
         commentService.addComment(comment, commentFormDto);
+        return "redirect:/board/" + categoryName + "/" + boardId;
+    }
+
+    @PostMapping(path = "/{category}/reply/delete")
+    String deleteReplyDelete(@PathVariable(value = "category")String categoryName, Long boardId, Long commentId){
+        commentService.deleteComment(commentId);
         return "redirect:/board/" + categoryName + "/" + boardId;
     }
 }

@@ -185,14 +185,15 @@
                                         </li>
                                     </ol>
                                 </nav>
-                                <div class="navbar">
-                                    <ul class="nav navbar-nav ml-auto">
-                                    </ul>
-                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/{boardId}/rewrite(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-dot-circle-o"></i> 수정</a>
-                                    &nbsp;
-                                    <a sec:authorize="isAuthenticated()" th:classappend="${loginUser.id == board.user.id} ? '' : 'disabled'" th:href="@{/board/{category}/{boardId}/delete(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-dot-circle-o"></i> 삭제</a>
+                                <div class="navbar float-right" sec:authorize="isAuthenticated()" th:remove="${loginUser.id == board.user.id} ? 'none' : 'all'" >
+                                    <form method="post" th:action="@{/board/{category}/delete(category=${board.category.name})}">
+                                        <a th:href="@{/board/{category}/{boardId}/rewrite(category=${board.category.name}, boardId=${board.id})}" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-dot-circle-o"></i> 수정</a>
+                                        &nbsp;
+                                        <input type="hidden" name="boardId" th:value="${board.id}">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-dot-circle-o"></i> 삭제</button>
+                                    </form>
                                 </div>
                                 <div class="container" style="max-width: 97%;">
                                     <p th:text="'누가 : ' + ${board.content.who}">누가 : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, maxime. .</p>
@@ -210,42 +211,56 @@
                                     </div>
                                     <hr class="my-4">
                                 </div>
-                                <div class="container" style="max-width: 97%;">
-                                    <i class="cui-speech"></i>&nbsp;댓글 • </a>
-                                    <!--<span th:text=""></span> 댓글 개수-->
-                                    <div class="row" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 0} ? 'none' : 'all'">
-                                        <div class="col-sm-12 col-xl-6" >
-                                            <div class="card border-success" th:object="${board.commentList.get(iterstat.index)}">
-                                                <div class="card-header">
-                                                    <strong th:text="*{user.nickname}"></strong>님
-                                                </div>
-                                                <div class="card-body">
-                                                    <p th:text="'누가 : ' + *{content.who}"></p>
-                                                    <p th:text="'언제 : ' + *{content.when}"></p>
-                                                    <p th:text="'어디서 : ' + *{content.where}"></p>
-                                                    <p th:text="'무엇을 : ' + *{content.what}"></p>
-                                                    <p th:text="'어떻게 : ' + *{content.how}"></p>
-                                                    <p th:text="'왜 : ' + *{content.why}"></p>
+
+                                    <div class="container" style="max-width: 97%;">
+                                        <i class="cui-speech"></i>&nbsp;댓글 [<span th:text="${board.commentList.size()}"></span>]</a>
+                                        <div class="row" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 0} ? 'none' : 'all'">
+                                            <div class="col-sm-12 col-xl-6" >
+                                                <div class="card border-success" th:object="${board.commentList.get(iterstat.index)}">
+                                                    <form method="post" th:action="@{/board/{category}/reply/delete(category=${board.category.name})}">
+                                                        <div class="card-header">
+                                                            <strong th:text="*{user.nickname}"></strong>님
+                                                            <span class="float-right" th:text="*{#temporals.format(date.regDate, 'yyyy/MM/dd HH:mm')}"></span>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p th:text="'누가 : ' + *{content.who}"></p>
+                                                            <p th:text="'언제 : ' + *{content.when}"></p>
+                                                            <p th:text="'어디서 : ' + *{content.where}"></p>
+                                                            <p th:text="'무엇을 : ' + *{content.what}"></p>
+                                                            <p th:text="'어떻게 : ' + *{content.how}"></p>
+                                                            <p th:text="'왜 : ' + *{content.why}"></p>
+                                                            <input type="hidden" name="boardId" th:value="${board.id}">
+                                                            <input type="hidden" name="commentId" th:value="*{id}">
+                                                            <button sec:authorize="isAuthenticated()" th:remove="${loginUser.id} == *{user.id} ? 'none' : 'all'" type="submit" class="btn btn-sm btn-danger float-right" >
+                                                                <i class="fa fa-dot-circle-o"></i> 삭제</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12 col-xl-6" th:remove="${board.commentList.size() < (iterstat.count + 1)} ? 'all' : 'none'">
-                                            <div class="card border-success" th:object="${board.commentList.get(iterstat.index + 1)}">
-                                                <div class="card-header">
-                                                    <strong th:text="*{user.nickname}"></strong>님
-                                                </div>
-                                                <div class="card-body" >
-                                                    <p th:text="'누가 : ' + *{content.who}"></p>
-                                                    <p th:text="'언제 : ' + *{content.when}"></p>
-                                                    <p th:text="'어디서 : ' + *{content.where}"></p>
-                                                    <p th:text="'무엇을 : ' + *{content.what}"></p>
-                                                    <p th:text="'어떻게 : ' + *{content.how}"></p>
-                                                    <p th:text="'왜 : ' + *{content.why}"></p>
+                                            <div class="col-sm-12 col-xl-6" th:remove="${board.commentList.size() < (iterstat.count + 1)} ? 'all' : 'none'">
+                                                <div class="card border-success" th:object="${board.commentList.get(iterstat.index + 1)}">
+                                                    <form method="post" th:action="@{/board/{category}/reply/delete(category=${board.category.name})}">
+                                                        <div class="card-header">
+                                                        <strong th:text="*{user.nickname}"></strong>님
+                                                        <span class="float-right" th:text="*{#temporals.format(date.regDate, 'yyyy/MM/dd HH:mm')}"></span>
+                                                    </div>
+                                                        <div class="card-body" >
+                                                            <p th:text="'누가 : ' + *{content.who}"></p>
+                                                            <p th:text="'언제 : ' + *{content.when}"></p>
+                                                            <p th:text="'어디서 : ' + *{content.where}"></p>
+                                                            <p th:text="'무엇을 : ' + *{content.what}"></p>
+                                                            <p th:text="'어떻게 : ' + *{content.how}"></p>
+                                                            <p th:text="'왜 : ' + *{content.why}"></p>
+                                                            <input type="hidden" name="boardId" th:value="${board.id}">
+                                                            <input type="hidden" name="commentId" th:value="*{id}">
+                                                            <button type="submit" sec:authorize="isAuthenticated()" th:remove="${loginUser.id} == *{user.id} ? 'none' : 'all'" class="btn btn-sm btn-danger float-right" >
+                                                                <i class="fa fa-dot-circle-o"></i> 삭제</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <div class="container">
                                     <div class="card">
                                         <form method="post" th:object="${commentFormDto}" >

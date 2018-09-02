@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -25,6 +27,22 @@ public class CommentServiceImpl implements CommentService {
         BeanUtils.copyProperties(commentFormDto, comment.getContent());
         comment.setDate(new NormalDate(LocalDateTime.now(), LocalDateTime.now()));
         comment.setGreat(0);
+        commentRepository.save(comment);
+        return true;
+    }
+
+    @Override
+    public boolean deleteComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId).get();
+        comment.getDate().setRegDate(LocalDateTime.now());
+        Content content = new Content();
+        content.setWho(comment.getUser().getNickname() + "님이");
+        content.setWhen(comment.getDate().getRegDate().format(DateTimeFormatter.ofPattern("MM월 dd일 경,"))); //점검 필수
+        content.setWhere("'" + comment.getBoard().getTitle() + "' 게시글에서");
+        content.setWhat("본인의 댓글을");
+        content.setHow("삭제하셨습니다");
+        content.setWhy("^^");
+        comment.setContent(content);
         commentRepository.save(comment);
         return true;
     }

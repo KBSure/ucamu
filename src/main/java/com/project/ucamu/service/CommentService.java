@@ -5,4 +5,5 @@ import com.project.ucamu.dto.ContentFormDto;
 
 public interface CommentService {
     boolean addComment(Comment comment, ContentFormDto commentFormDto);
+    boolean deleteComment(Long commentId);
 }
