@@ -2,8 +2,9 @@ package com.project.ucamu.controller;
 
 import com.project.ucamu.common.Pagination;
 import com.project.ucamu.domain.Board;
+import com.project.ucamu.domain.Comment;
 import com.project.ucamu.domain.User;
-import com.project.ucamu.dto.BoardFormDto;
+import com.project.ucamu.dto.ContentFormDto;
 import com.project.ucamu.dto.SearchStyle;
 import com.project.ucamu.service.BoardService;
 import com.project.ucamu.service.CommentService;
@@ -29,6 +30,9 @@ public class BoardController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CommentService commentService;
+
 //    @Autowired
 //    CommentService commentService;
 
@@ -52,15 +56,14 @@ public class BoardController {
     @GetMapping(path = "/{category}/write")
     public String getWrite(@PathVariable(value = "category") String categoryName, ModelMap modelMap){
         modelMap.addAttribute("category", categoryName);
-        modelMap.addAttribute(new BoardFormDto());
+        modelMap.addAttribute("boardFormDto", new ContentFormDto());
 //        return "board/write";
         return "test/board/write";
     }
 
     //category가 유효하지 않도록 접근 한 경우 예외 처리 해야 한다.
     @PostMapping(path = "/{category}/write")
-    public String postWrite(@Valid BoardFormDto boardFormDto, @PathVariable(value = "category") String categoryName, Principal principal){
-
+    public String postWrite(@Valid ContentFormDto boardFormDto, @PathVariable(value = "category") String categoryName, Principal principal){
         //        User user = userService.getUser((User)request.getAttribute("loginUser").getId());
         User user = userService.getUser(principal.getName());
         Board board = new Board();
@@ -75,6 +78,7 @@ public class BoardController {
         //boardId에 해당하는 board Entity을 불러와야 한다. (카테고리 체크를 해봐도 좋다)
         Board board = boardService.getBoard(boardId, true);
         modelMap.addAttribute(board);
+        modelMap.addAttribute("commentFormDto", new ContentFormDto());
 //        return "board/detail";
         return "test/board/detail";
     }
@@ -84,12 +88,12 @@ public class BoardController {
         Board board = boardService.getBoard(boardId, false);
         modelMap.addAttribute(board);
         modelMap.addAttribute("category", categoryName);
-        modelMap.addAttribute(new BoardFormDto());
+        modelMap.addAttribute("boardFormDto", new ContentFormDto());
         return "test/board/rewrite";
     }
 
     @PostMapping(path = "/{category}/{boardId}/rewrite")
-    public String postRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, BoardFormDto boardFormDto){
+    public String postRewrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ContentFormDto boardFormDto){
         boardService.updateBoard(boardId, boardFormDto);
         return "redirect:/board/" + categoryName + "/" + boardId;
     }
@@ -110,4 +114,13 @@ public class BoardController {
         return "redirect:/board/" + categoryName + "/" + boardId;
     }
 
+    @PostMapping(path = "/{category}/{boardId}/reply/write")
+    public String postReplyWrite(@PathVariable(value = "category")String categoryName, @PathVariable(value = "boardId")Long boardId, ContentFormDto commentFormDto, Principal principal){
+        Comment comment = new Comment();
+        User user = userService.getUser(principal.getName());
+        comment.setUser(user);
+        comment.setBoard(boardService.getBoard(boardId, false));
+        commentService.addComment(comment, commentFormDto);
+        return "redirect:/board/" + categoryName + "/" + boardId;
+    }
 }

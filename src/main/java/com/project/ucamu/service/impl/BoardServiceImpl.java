@@ -5,7 +5,7 @@ import com.project.ucamu.domain.Category;
 import com.project.ucamu.domain.User;
 import com.project.ucamu.domain.embeddable.Content;
 import com.project.ucamu.domain.embeddable.NormalDate;
-import com.project.ucamu.dto.BoardFormDto;
+import com.project.ucamu.dto.ContentFormDto;
 import com.project.ucamu.repository.BoardRepository;
 import com.project.ucamu.repository.CategoryRepository;
 import com.project.ucamu.service.BoardService;
@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -33,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public Board addBoard(Board board, BoardFormDto boardFormDto) {
+    public Board addBoard(Board board, ContentFormDto boardFormDto) {
         //image 등록도 진행해야함
         board.setContent(new Content());
         BeanUtils.copyProperties(boardFormDto, board.getContent());
@@ -47,7 +45,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public Board updateBoard(Long boardId, BoardFormDto boardFormDto) {
+    public Board updateBoard(Long boardId, ContentFormDto boardFormDto) {
         Board oldBoard = boardRepository.findById(boardId).get();
         BeanUtils.copyProperties(boardFormDto, oldBoard.getContent());
         oldBoard.setTitle(oldBoard.getContent().getHow());

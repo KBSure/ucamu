@@ -32,8 +32,7 @@ public class Board implements Serializable {
     @JoinColumn(name = "CATEGORY_id")
         private Category category; //path 내의 카테고리 : board/free
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향
-    @JoinColumn(name = "BOARD_id")
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL) //양방향
         private List<Comment> commentList; // 비워두기
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //단방향

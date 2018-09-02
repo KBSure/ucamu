@@ -213,38 +213,77 @@
                                 <div class="container" style="max-width: 97%;">
                                     <i class="cui-speech"></i>&nbsp;댓글 • </a>
                                     <!--<span th:text=""></span> 댓글 개수-->
-                                    <div class="row">
-                                        <div class="col-sm-12 col-xl-6" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 0} ? 'none' : 'all'">
-                                            <div class="card border-success" >
+                                    <div class="row" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 0} ? 'none' : 'all'">
+                                        <div class="col-sm-12 col-xl-6" >
+                                            <div class="card border-success" th:object="${board.commentList.get(iterstat.index)}">
                                                 <div class="card-header">
-                                                    <strong th:text="${comment.user.nickname}"></strong>님
+                                                    <strong th:text="*{user.nickname}"></strong>님
                                                 </div>
                                                 <div class="card-body">
-                                                    <p th:text="'누가 : ' + ${comment.content.who}"></p>
-                                                    <p th:text="'언제 : ' + ${comment.content.when}"></p>
-                                                    <p th:text="'어디서 : ' + ${comment.content.where}"></p>
-                                                    <p th:text="'무엇을 : ' + ${comment.content.what}"></p>
-                                                    <p th:text="'어떻게 : ' + ${comment.content.how}"></p>
-                                                    <p th:text="'왜 : ' + ${comment.content.why}"></p>
+                                                    <p th:text="'누가 : ' + *{content.who}"></p>
+                                                    <p th:text="'언제 : ' + *{content.when}"></p>
+                                                    <p th:text="'어디서 : ' + *{content.where}"></p>
+                                                    <p th:text="'무엇을 : ' + *{content.what}"></p>
+                                                    <p th:text="'어떻게 : ' + *{content.how}"></p>
+                                                    <p th:text="'왜 : ' + *{content.why}"></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-xl-6" th:each="comment, iterstat : ${board.commentList}" th:remove="${iterstat.index % 2 == 1} ? 'none' : 'all'">
-                                            <div class="card border-success">
+                                        <div class="col-sm-12 col-xl-6" th:remove="${board.commentList.size() < (iterstat.count + 1)} ? 'all' : 'none'">
+                                            <div class="card border-success" th:object="${board.commentList.get(iterstat.index + 1)}">
                                                 <div class="card-header">
-                                                    <strong th:text="${comment.user.nickname}"></strong>님
+                                                    <strong th:text="*{user.nickname}"></strong>님
                                                 </div>
                                                 <div class="card-body" >
-                                                    <p th:text="'누가 : ' + ${comment.content.who}"></p>
-                                                    <p th:text="'언제 : ' + ${comment.content.when}"></p>
-                                                    <p th:text="'어디서 : ' + ${comment.content.where}"></p>
-                                                    <p th:text="'무엇을 : ' + ${comment.content.what}"></p>
-                                                    <p th:text="'어떻게 : ' + ${comment.content.how}"></p>
-                                                    <p th:text="'왜 : ' + ${comment.content.why}"></p>
+                                                    <p th:text="'누가 : ' + *{content.who}"></p>
+                                                    <p th:text="'언제 : ' + *{content.when}"></p>
+                                                    <p th:text="'어디서 : ' + *{content.where}"></p>
+                                                    <p th:text="'무엇을 : ' + *{content.what}"></p>
+                                                    <p th:text="'어떻게 : ' + *{content.how}"></p>
+                                                    <p th:text="'왜 : ' + *{content.why}"></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="container">
+                                    <div class="card">
+                                        <form method="post" th:object="${commentFormDto}" >
+                                            <div class="card-header">
+                                                <i class="cui-pencil"></i> 댓글 쓰기
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        누가<input type="text" class="form-control" th:field="*{who}">
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        언제<input type="text" class="form-control" th:field="*{when}" >
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        어디서<input type="text" class="form-control" th:field="*{where}" >
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        무엇을<input type="text" class="form-control" th:field="*{what}" >
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        어떻게<input type="text" class="form-control" th:field="*{how}" >
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        왜<input type="text" class="form-control" th:field="*{why}" >
+                                                    </li>
+                                                </ul>
+                                                <div class="navbar">
+                                                    <ul class="nav navbar-nav ml-auto">
+                                                    </ul>
+                                                    <button type="submit" class="btn btn-brand btn-lg btn-tumblr" th:formaction="@{/board/{category}/{boardId}/reply/write(category=${board.category.name}, boardId=${board.id})}" style="margin-bottom: 4px">
+                                                        <span>등록</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

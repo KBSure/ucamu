@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.validation.constraints.Size;
 
 @Getter @Setter
-public class BoardFormDto {
+public class ContentFormDto {
     @Size(max = 255, message = "255자 이하로 작성해주세요.")
         String who;
     @Size(max = 255, message = "255자 이하로 작성해주세요.")

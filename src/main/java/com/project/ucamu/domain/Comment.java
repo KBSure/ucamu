@@ -25,4 +25,8 @@ public class Comment implements Serializable {
     @JoinColumn(name = "USER_id")
         private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}) //양방향
+    @JoinColumn(name = "BOARD_id")
+        private Board board;
+
 }

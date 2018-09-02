@@ -3,15 +3,13 @@ package com.project.ucamu.service;
 import com.project.ucamu.domain.Board;
 import com.project.ucamu.domain.Category;
 import com.project.ucamu.domain.User;
-import com.project.ucamu.dto.BoardFormDto;
+import com.project.ucamu.dto.ContentFormDto;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 
 public interface BoardService {
-    Board addBoard(Board board, BoardFormDto boardFormDto);
-    Board updateBoard(Long boardId, BoardFormDto boardFormDto);
+    Board addBoard(Board board, ContentFormDto boardFormDto);
+    Board updateBoard(Long boardId, ContentFormDto boardFormDto);
     Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
     Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);

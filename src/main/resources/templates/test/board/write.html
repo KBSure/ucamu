@@ -171,8 +171,8 @@
                                     <input type="text" th:field="*{who}" class="form-control" placeholder="ex) 내가">
                                 </div>
                                 <div class="form-group">
-                                    <label for="when">언제</label>
-                                    <input type="text" class="form-control" id="when" name="when" placeholder="ex) 지금">
+                                    <label th:for="when">언제</label>
+                                    <input type="text" class="form-control" th:field="*{when}" placeholder="ex) 지금">
                                 </div>
                                 <div class="form-group">
                                     <label for="where">어디서</label>
