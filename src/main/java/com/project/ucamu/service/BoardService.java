@@ -13,6 +13,7 @@ public interface BoardService {
     Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
     Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
+    Page<Board> getBoardList(String categoryName, String sortType, int count);
     boolean deleteBoard(Long boardId);
     boolean greatBoard(Long boardId, User user);
     //categoryName, SortType, SearchType, SearcyStr, PageNum

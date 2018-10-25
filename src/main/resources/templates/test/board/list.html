@@ -8,6 +8,7 @@
     <meta name="keyword" content="">
     <title>유카뮤 - 육하원칙 커뮤니티</title>
 
+
     <!--<link th:href="@{coreui/vendors/flag-icon-css/css/flag-icon.min.css}" rel="stylesheet">-->
     <!--<link th:href="@{coreui/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">-->
     <!--<link th:href="@{coreui/vendors/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">-->
@@ -16,10 +17,18 @@
     <!--<link href="../static/coreui/vendors/pace-progress/css/pace.min.css" rel="stylesheet">-->
 
     <link th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.css}" href="" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/4.1.0/js/bootstrap.js}" href="" rel="stylesheet">
     <!-- Custom styles for this template -->
+
+
+
+
+
     <link th:href="@{/coreui/css/style.css}" href="" rel="stylesheet">
     <link th:href="@{/coreui/css/coreui-icons.css}" rel="stylesheet">
     <link th:href="@{/coreui/ie7/ie7.css}" rel="stylesheet">
+
+
 
     <!--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">-->
     <!--<style type="text/css">/* Chart.js */-->
@@ -172,7 +181,7 @@
                                         <span th:if="${searchStyle.sortType == 'VIEW'}">조회순</span>
                                         <span th:if="${searchStyle.sortType == 'GREAT'}">추천순</span>
                                     </button>
-                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
+                                    <div class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
                                         <h6 class="dropdown-header">정렬 조건</h6>
                                         <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='NEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">최신순</a>
                                         <a class="dropdown-item" th:href="@{/board/{category}(pageNum=${pagination.getThisPage()}, sortType='VIEW', category=${searchStyle.categoryName}, searchType=${searchStyle.searchType}, searchStr=${searchStyle.searchStr})}">조회순</a>
@@ -259,8 +268,14 @@
             <a href="#">김병수</a>
         </div>
     </footer>
-    <script type="text/javascript" th:inline="javascript">
-        $('.dropdown-toggle').dropdown()
+    <!--<script type="text/javascript" th:inline="javascript">-->
+        <!--$('.dropdown-toggle').dropdown();-->
+    <!--</script>-->
+    <script>
+        $(document).ready(function(){
+            $(".dropdown-toggle").dropdown();
+        });
     </script>
+
 </body>
 </html>

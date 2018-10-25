@@ -83,6 +83,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Page<Board> getBoardList(String categoryName, String sortType, int count) {
+
+        return boardRepository.findBoardList(categoryName, sortType, count);
+    }
+
+    @Override
     @Transactional
     public boolean deleteBoard(Long boardId) {
         boardRepository.deleteById(boardId);

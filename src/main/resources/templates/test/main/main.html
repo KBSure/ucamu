@@ -1,0 +1,231 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.springframework.org/schema/security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keyword" content="">
+    <title>유카뮤 - 육하원칙 커뮤니티</title>
+
+
+    <!--<link th:href="@{coreui/vendors/flag-icon-css/css/flag-icon.min.css}" rel="stylesheet">-->
+    <!--<link th:href="@{coreui/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">-->
+    <!--<link th:href="@{coreui/vendors/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">-->
+
+    <!--<link href="../static/coreui/css/style.css" rel="stylesheet">-->
+    <!--<link href="../static/coreui/vendors/pace-progress/css/pace.min.css" rel="stylesheet">-->
+
+    <link th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.css}" href="" rel="stylesheet">
+    <!--<link th:href="@{/webjars/bootstrap/4.1.0/js/bootstrap.js}" href="" rel="stylesheet">-->
+    <!-- Custom styles for this template -->
+
+
+
+
+
+    <link th:href="@{/coreui/css/style.css}" href="" rel="stylesheet">
+    <link th:href="@{/coreui/css/coreui-icons.css}" rel="stylesheet">
+    <link th:href="@{/coreui/ie7/ie7.css}" rel="stylesheet">
+
+
+
+    <!--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">-->
+    <!--<style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>-->
+</head>
+<body th:fragment="body" class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<header class="app-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <h2>유 카 뮤</h2>
+        <!--<img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">-->
+        <!--<img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">-->
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#">고루보기</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <!--<img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">-->
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>Account</strong>
+                </div>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-bell-o"></i> Updates
+                    <span class="badge badge-info">42</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-envelope-o"></i> Messages
+                    <span class="badge badge-success">42</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-tasks"></i> Tasks
+                    <span class="badge badge-danger">42</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-comments"></i> Comments
+                    <span class="badge badge-warning">42</span>
+                </a>
+                <div class="dropdown-header text-center">
+                    <strong>Settings</strong>
+                </div>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-user"></i> Profile</a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-wrench"></i> Settings</a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-usd"></i> Payments
+                    <span class="badge badge-dark">42</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-file"></i> Projects
+                    <span class="badge badge-primary">42</span>
+                </a>
+                <div class="divider"></div>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-shield"></i> Lock Account</a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-lock"></i> Logout</a>
+            </div>
+        </li>
+    </ul>
+    <ul sec:authorize="!isAuthenticated()" class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/user/join}">회원가입</a>
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/user/login}">로그인</a>
+        </li>
+    </ul>
+    <ul sec:authorize="isAuthenticated()" class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/user/info}" th:text="${loginUser.nickname}"></a>님 환영합니다.
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+        </li>
+    </ul>
+
+    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</header>
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-title">유카뮤니티</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/free">
+                        <i class="nav-icon icon-drop"></i> 자유 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/picture">
+                        <i class="nav-icon icon-pencil"></i> 사진 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/issue">
+                        <i class="nav-icon icon-pencil"></i> 이슈 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/tip">
+                        <i class="nav-icon icon-pencil"></i> 팁 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/worry">
+                        <i class="nav-icon icon-pencil"></i> 고민 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/question">
+                        <i class="nav-icon icon-pencil"></i> 질문 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/discussion">
+                        <i class="nav-icon icon-pencil"></i> 토론 </a>
+                </li>
+                <!--<li class="divider"></li>-->
+            </ul>
+        </nav>
+    </div>
+    <main class="main">
+        <br>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">운영 알림판</div>
+                            <div class="card-body">
+                                <tbody>
+                                    <tr th:each="board, iterstat : ${boardList.notice}">
+                                        <th scope="row"></th>
+                                        <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a></td>
+                                        <td><span th:text="${board.commentNum}">댓글 수</span></td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">이주의 추천글</div>
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+                                ex ea commodo consequat.</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">이슈</div>
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+                                ex ea commodo consequat.</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">토론</div>
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+                                ex ea commodo consequat.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<footer class="app-footer">
+    <div>
+        <a href="#">UCaMu</a>
+        <span>© 2018 creativeLabs.</span>
+    </div>
+    <div class="ml-auto">
+        <span>Developed by</span>
+        <a href="#">김병수</a>
+    </div>
+</footer>
+<!--<script type="text/javascript" th:inline="javascript">-->
+<!--$('.dropdown-toggle').dropdown();-->
+<!--</script>-->
+<script>
+    $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+    });
+</script>
+
+</body>
+</html>
