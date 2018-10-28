@@ -31,6 +31,7 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
     }
 
     @Override
+
     public Page<Board> findBoardList(String categoryName, Pageable pageable, String searchType, String searchStr) {
         QBoard qBoard = QBoard.board;
         JPQLQuery<Board> query = from(qBoard);
@@ -40,6 +41,14 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
         List<Board> boardList = getQuerydsl().applyPagination(pageable, query).fetch();
         long fetchCount = query.fetchCount();
         return new PageImpl<>(boardList, pageable, fetchCount);
+    }
+
+    @Override
+    public List<Board> findBoardList(String categoryName, String sortType, int count) {
+        QBoard qBoard = QBoard.board;
+        JPQLQuery<Board> query = from(qBoard);
+
+        return null;
     }
 
     private JPQLQuery<Board> whereCategory(JPQLQuery<Board> query, QBoard qBoard, String categoryName){

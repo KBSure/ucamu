@@ -9,4 +9,5 @@ import java.util.List;
 public interface BoardRepositoryCustom {
     //findBoardList
     Page<Board> findBoardList(String categoryName, Pageable pageable, String searchType, String searchStr);
+    List<Board> findBoardList(String categoryName, String sortType, int count);
 }
