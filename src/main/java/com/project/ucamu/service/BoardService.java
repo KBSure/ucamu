@@ -12,8 +12,7 @@ public interface BoardService {
     Board updateBoard(Long boardId, ContentFormDto boardFormDto);
     Board getBoard(Long boardId, boolean viewUp);
     Category getCategory(String categoryName);
-    Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum);
-    Page<Board> getBoardList(String categoryName, String sortType, int count);
+    Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum, Integer pageSize);
     boolean deleteBoard(Long boardId);
     boolean greatBoard(Long boardId, User user);
     //categoryName, SortType, SearchType, SearcyStr, PageNum

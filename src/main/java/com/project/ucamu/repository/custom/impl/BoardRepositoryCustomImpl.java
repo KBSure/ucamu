@@ -3,10 +3,13 @@ package com.project.ucamu.repository.custom.impl;
 import com.project.ucamu.domain.Board;
 import com.project.ucamu.domain.QBoard;
 import com.project.ucamu.repository.custom.BoardRepositoryCustom;
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import javax.persistence.EntityManager;
@@ -41,14 +44,6 @@ public class BoardRepositoryCustomImpl extends QuerydslRepositorySupport impleme
         List<Board> boardList = getQuerydsl().applyPagination(pageable, query).fetch();
         long fetchCount = query.fetchCount();
         return new PageImpl<>(boardList, pageable, fetchCount);
-    }
-
-    @Override
-    public List<Board> findBoardList(String categoryName, String sortType, int count) {
-        QBoard qBoard = QBoard.board;
-        JPQLQuery<Board> query = from(qBoard);
-
-        return null;
     }
 
     private JPQLQuery<Board> whereCategory(JPQLQuery<Board> query, QBoard qBoard, String categoryName){

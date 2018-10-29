@@ -41,7 +41,7 @@
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <h2>유 카 뮤</h2>
         <!--<img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">-->
         <!--<img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">-->
@@ -172,13 +172,15 @@
                         <div class="card">
                             <div class="card-header">운영 알림판</div>
                             <div class="card-body">
-                                <tbody>
-                                    <tr th:each="board, iterstat : ${boardList.notice}">
-                                        <th scope="row"></th>
-                                        <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a></td>
-                                        <td><span th:text="${board.commentNum}">댓글 수</span></td>
-                                    </tr>
-                                </tbody>
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr th:each="board, iterstat : ${noticeList}">
+                                            <th scope="row"></th>
+                                            <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a></td>
+                                            <td><span style="color: #bf3400">[<span th:text="${board.commentList.size()}" >댓글 수</span>]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -68,7 +69,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum) {
+    public Page<Board> getBoardList(String categoryName, String sortType, String searchType, String searchStr, Integer pageNum, Integer pageSize) {
         //sort시킨 것, Search관련, pageNum
         //sortType에는 우선 최신순, 공감순, 조회순으로 할 것
 
@@ -76,16 +77,10 @@ public class BoardServiceImpl implements BoardService {
         if(pageNum == null){
             pageNum = 1;
         }
-        Pageable pageable = PageRequest.of(pageNum - 1, 15, sort);
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
 
         return boardRepository.findBoardList(categoryName, pageable, searchType, searchStr);
 
-    }
-
-    @Override
-    public Page<Board> getBoardList(String categoryName, String sortType, int count) {
-
-        return boardRepository.findBoardList(categoryName, sortType, count);
     }
 
     @Override

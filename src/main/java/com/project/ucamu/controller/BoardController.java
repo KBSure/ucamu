@@ -41,7 +41,7 @@ public class BoardController {
                                @RequestParam(name = "searchType", required = false)String searchType, @RequestParam(name = "searchStr", required = false)String searchStr,
                                @RequestParam(name = "pageNum", required = false)Integer pageNum, ModelMap modelMap){
 //해당 카테고리의 리스트들을 페이징처리 해서 boardList를 modelMap에 넘긴다.
-        Page<Board> boardPage = boardService.getBoardList(categoryName, sortType, searchType, searchStr, pageNum);//categoryName, SortType, SearchType, SearcyStr, PageNum
+        Page<Board> boardPage = boardService.getBoardList(categoryName, sortType, searchType, searchStr, pageNum, 15);//categoryName, SortType, SearchType, SearcyStr, PageNum
         List<Board> boardList = boardPage.getContent();
 
         Pagination pagination = new Pagination(boardPage.getNumber() + 1, 10, boardPage.getTotalElements(), boardPage.getTotalPages());
