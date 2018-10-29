@@ -171,13 +171,12 @@
                     <div class="col-sm-6 col-md-6">
                         <div class="card">
                             <div class="card-header">운영 알림판</div>
-                            <div class="card-body">
+                            <div class="card-body" style="min-height: 376px">
                                 <table class="table table-sm">
                                     <tbody>
                                         <tr th:each="board, iterstat : ${noticeList}">
                                             <th scope="row"></th>
-                                            <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a></td>
-                                            <td><span style="color: #bf3400">[<span th:text="${board.commentList.size()}" >댓글 수</span>]</span></td>
+                                            <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a><span style="color: #bf3400; font-size: x-small">&nbsp;&nbsp;&nbsp;[<span th:text="${board.commentList.size()}" >댓글 수</span>]</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -187,22 +186,46 @@
                     <div class="col-sm-6 col-md-6">
                         <div class="card">
                             <div class="card-header">이주의 추천글</div>
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                                ex ea commodo consequat.</div>
+                            <div class="card-body" style="min-height: 376px">
+                                <table class="table table-sm">
+                                    <tbody>
+                                    <tr th:each="board, iterstat : ${greatList}">
+                                        <th scope="row"></th>
+                                        <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a><span style="color: #9f191f; font-size: x-small">&nbsp;&nbsp;&nbsp;<span th:text="${board.great}">댓글 수</span></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="card">
                             <div class="card-header">이슈</div>
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                                ex ea commodo consequat.</div>
+                            <div class="card-body" style="min-height: 376px">
+                                <table class="table table-sm">
+                                    <tbody>
+                                    <tr th:each="board, iterstat : ${issueList}">
+                                        <th scope="row"></th>
+                                        <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a><span style="color: #bf3400; font-size: x-small">&nbsp;&nbsp;&nbsp;[<span th:text="${board.commentList.size()}" >댓글 수</span>]</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="card">
                             <div class="card-header">토론</div>
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                                ex ea commodo consequat.</div>
+                            <div class="card-body" style="min-height: 376px">
+                                <table class="table table-sm">
+                                    <tbody>
+                                    <tr th:each="board, iterstat : ${discussionList}">
+                                        <th scope="row"></th>
+                                        <td><a th:href="@{/board/{category}/{id}(category = ${board.category.name}, id = ${board.id})}"><span th:text="${board.title}">제목</span></a><span style="color: #bf3400; font-size: x-small">&nbsp;&nbsp;&nbsp;[<span th:text="${board.commentList.size()}" >댓글 수</span>]</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
