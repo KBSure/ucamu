@@ -15,8 +15,12 @@ public class RefererCheckInterceptor extends HandlerInterceptorAdapter {
         String referer = request.getHeader("referer");
         String uri = request.getRequestURI();
         if("/user/login".equals(uri)){
-            uri = referer;
+            uri = "/";
+            if(!referer.contains("/user/join")){
+                uri = referer;
+            }
         }
+        System.out.println("uri : " + uri);
         request.setAttribute("loginRedirect", uri);
         return super.preHandle(request, response, handler);
     }

@@ -45,4 +45,9 @@ public class UserController {
         return "test/user/login";
     }
 
+//    @GetMapping("/info")
+//    public String getInfo(Principal principal){
+//        return "test/user/info";
+//    }
+
 }

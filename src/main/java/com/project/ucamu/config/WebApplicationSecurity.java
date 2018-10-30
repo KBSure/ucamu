@@ -21,13 +21,14 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/board/free") //임시
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/") //임시
                 .and().authorizeRequests()
                     .requestMatchers(new AntPathRequestMatcher("/**.html")).permitAll()
                     .antMatchers("/board/**/write").hasRole("USER")
                     .antMatchers("/board/**/great").hasRole("USER")
                     .antMatchers("/board/**/rewrite").hasRole("USER")
                     .antMatchers("/board/**/delete").hasRole("USER")
+                    .antMatchers("/").permitAll()
                     .antMatchers("/board/**").permitAll()
                     .antMatchers("/user/join/**").permitAll()
                     .antMatchers("/h2-console/**").permitAll()
@@ -40,7 +41,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     //                .loginProcessingUrl("/user/login")
                     .usernameParameter("idName")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/board/free") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
+                    .defaultSuccessUrl("/") // 성공하면 이동하는 페이지. --> 컨트롤러에 매핑 X --> 404
                     .successHandler(customAuthenticationSuccessHandler())
                     .failureUrl("/user/login")
                     .permitAll()
@@ -52,7 +53,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
     public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler(){
         CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler = new CustomAuthenticationSuccessHandler();
         customAuthenticationSuccessHandler.setUseReferer(true);
-        customAuthenticationSuccessHandler.setDefaultTargetUrl("/board/free");
+        customAuthenticationSuccessHandler.setDefaultTargetUrl("/");
         customAuthenticationSuccessHandler.setTargetUrlParameter("loginRedirect");
 
         return customAuthenticationSuccessHandler;
