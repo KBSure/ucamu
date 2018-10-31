@@ -21,6 +21,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
             User user = new User();
             user.setNickname(securityUser.getNickname());
             user.setId(securityUser.getId());
+            user.setIdName(securityUser.getUsername());
             request.setAttribute("loginUser", user);
         }
 

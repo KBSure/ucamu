@@ -1,5 +1,6 @@
 package com.project.ucamu.controller;
 
+import com.project.ucamu.domain.User;
 import com.project.ucamu.dto.UserFormDto;
 import com.project.ucamu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -45,9 +47,17 @@ public class UserController {
         return "test/user/login";
     }
 
-//    @GetMapping("/info")
-//    public String getInfo(Principal principal){
-//        return "test/user/info";
-//    }
+    @GetMapping("/info")
+    public String getInfo(ModelMap modelMap, @RequestAttribute("loginUser")User user){
+        modelMap.addAttribute(new UserFormDto());
+        user = userService.getUser(user.getIdName());
+        modelMap.addAttribute(user);
+        return "test/user/info";
+    }
 
+    @PostMapping("/info")
+    public String putInfo(UserFormDto userFormDto, @RequestAttribute("loginUser")User user){
+        userService.updateUser(user.getIdName(), userFormDto);
+        return "redirect:/user/info";
+    }
 }

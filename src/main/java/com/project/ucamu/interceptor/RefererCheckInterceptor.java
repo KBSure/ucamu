@@ -20,8 +20,8 @@ public class RefererCheckInterceptor extends HandlerInterceptorAdapter {
                 uri = referer;
             }
         }
-        System.out.println("uri : " + uri);
         request.setAttribute("loginRedirect", uri);
+        request.setAttribute("referer", referer);
         return super.preHandle(request, response, handler);
     }
 }

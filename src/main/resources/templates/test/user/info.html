@@ -1,0 +1,204 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keyword" content="">
+    <title>유카뮤 - 육하원칙 커뮤니티</title>
+
+    <!--<link th:href="@{coreui/vendors/flag-icon-css/css/flag-icon.min.css}" rel="stylesheet">-->
+    <!--<link th:href="@{coreui/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">-->
+    <!--<link th:href="@{coreui/vendors/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">-->
+
+    <!--<link href="../static/coreui/css/style.css" rel="stylesheet">-->
+    <!--<link href="../static/coreui/vendors/pace-progress/css/pace.min.css" rel="stylesheet">-->
+
+    <link th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.css}" href="" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/coreui/css/style.css}" href="" rel="stylesheet">
+    <link th:href="@{/coreui/css/coreui-icons.css}" rel="stylesheet">
+    <link th:href="@{/coreui/ie7/ie7.css}" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">-->
+    <!--<style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">/* Chart.js */-->
+    <!--@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>-->
+</head>
+<body th:fragment="body" class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<header class="app-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+        <h2>유 카 뮤</h2>
+        <!--<img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">-->
+        <!--<img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">-->
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" href="/">고루보기</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+    </ul>
+    <ul sec:authorize="!isAuthenticated()" class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/user/login}">로그인</a>
+        </li>
+    </ul>
+    <ul sec:authorize="isAuthenticated()" class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/user/info}" th:text="${loginUser.nickname}"></a>님 환영합니다.
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+        </li>
+    </ul>
+
+    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</header>
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-title">유카뮤니티</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/free">
+                        <i class="nav-icon icon-drop"></i> 자유 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/picture">
+                        <i class="nav-icon icon-pencil"></i> 사진 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/issue">
+                        <i class="nav-icon icon-pencil"></i> 이슈 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/tip">
+                        <i class="nav-icon icon-pencil"></i> 팁 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/worry">
+                        <i class="nav-icon icon-pencil"></i> 고민 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/question">
+                        <i class="nav-icon icon-pencil"></i> 질문 </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/discussion">
+                        <i class="nav-icon icon-pencil"></i> 토론 </a>
+                </li>
+                <!--<li class="divider"></li>-->
+            </ul>
+        </nav>
+    </div>
+    <main class="main">
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <form method="post" th:object="${userFormDto}" th:action="@{/user/info}">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>회원정보</strong>
+                            <small>회원정보를 확인하고, 원하는 내용을 갱신할 수 있습니다.</small>
+                        </div>
+                        <div class="card-body">
+                            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">아이디</label>
+                                    <div class="col-md-9">
+                                        <span th:field="*{idName}" class="form-control-static" th:text="${user.idName}"></span>
+                                        <!--<p class="form-control-static">Username</p>-->
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="password">비밀번호</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" th:field="*{password}" type="password">
+                                        <span class="help-block">숫자 영문자를 포함한 8~20자를 입력하세요.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="rePassword">비밀번호 확인</label>
+                                    <div class="col-md-9">
+                                        <input type="password" th:field="*{rePassword}" class="form-control">
+                                        <span class="help-block">숫자 영문자를 포함한 8~20자를 입력하세요.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="name">이름</label>
+                                    <div class="col-md-9">
+                                        <input type="text" th:field="*{name}" class="form-control">
+                                        <span class="help-block">2자에서 10자 사이의 값만 가능합니다.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="name">닉네임</label>
+                                    <div class="col-md-9">
+                                        <input type="text" th:field="*{nickname}" class="form-control">
+                                        <span class="help-block">8자 이하로 작성해주세요.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="email">이메일</label>
+                                    <div class="col-md-9">
+                                        <input type="email" th:field="*{email}" class="form-control">
+                                        <span class="help-block">45자 이하로 작성해주세요.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" th:for="phone">전화번호</label>
+                                    <div class="col-md-9">
+                                        <input type="text" th:field="*{phone}" class="form-control">
+                                        <span class="help-block">010-0000-0000형식으로 입력해 주세요.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" formmethod="post" class="btn btn-sm btn-primary">
+                                <i class="fa fa-dot-circle-o"></i> 저장</button>
+                            &nbsp;
+                            <a th:href="${referer}" class="btn btn-sm btn-danger">
+                                <i class="fa fa-ban"></i> 취소</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<footer class="app-footer">
+    <div>
+        <a href="#">UCaMu</a>
+        <span>© 2018 creativeLabs.</span>
+    </div>
+    <div class="ml-auto">
+        <span>Developed by</span>
+        <a href="#">김병수</a>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    /* <![CDATA[ */
+    document.getElementById("name").value = /*[[ ${user.name} ]]*/;
+    document.getElementById("nickname").value = /*[[ ${user.nickname} ]]*/;
+    document.getElementById("email").value = /*[[ ${user.email} ]]*/;
+    document.getElementById("phone").value = /*[[ ${user.phone} ]]*/;
+
+    /* ]]> */
+</script>
+</html>

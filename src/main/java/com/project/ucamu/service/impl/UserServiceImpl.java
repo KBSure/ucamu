@@ -31,6 +31,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserSituationRepository userSituationRepository;
 
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
     @Override
     @Transactional(readOnly = true)
     public User getUser(String idName) {
@@ -43,7 +45,6 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         BeanUtils.copyProperties(userFormDto, user);
 
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         Role role = roleRepository.findRoleByRoleName(RoleName.USER);
@@ -56,6 +57,22 @@ public class UserServiceImpl implements UserService {
         user.setUserdate(userDate);
         User saveUser = userRepository.save(user);
         return saveUser;
+    }
+
+    @Override
+    @Transactional
+    public User updateUser(String idName, UserFormDto userFormDto) {
+        User user = userRepository.findUserByIdName(idName);
+        user.setEmail(userFormDto.getEmail());
+        user.setNickname(userFormDto.getNickname());
+        user.setPhone(userFormDto.getPhone());
+        user.setName(userFormDto.getName());
+        user.getUserdate().setRegDate(LocalDateTime.now());
+        if(!"".equals(userFormDto.getPassword()) && userFormDto.getPassword() != null){
+            user.setPassword(passwordEncoder.encode(userFormDto.getPassword()));
+        }
+        userRepository.save(user);
+        return user;
     }
 
 }
