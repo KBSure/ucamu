@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 // Security에서 UserRole 조회할때 Lazy 로딩 해야되는데,
 // @Transactional 안붙이면 DB에서 조회후에 커넥션 닫기기 때문에 오류 납니다.
+//@Transactional(readOnly = true)
 @Transactional
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

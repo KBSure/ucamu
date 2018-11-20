@@ -33,7 +33,7 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/join/**").permitAll()
                     .antMatchers("/h2-console/**").permitAll()
                     .anyRequest().fullyAuthenticated()
-                .and().csrf().ignoringAntMatchers("/**")
+//                .and().csrf().ignoringAntMatchers("/**")
 //                .ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().disable()
                 .and().formLogin()
@@ -58,4 +58,6 @@ public class WebApplicationSecurity extends WebSecurityConfigurerAdapter {
 
         return customAuthenticationSuccessHandler;
     }
+
+    //logoutSucessHandler
 }
